@@ -1,0 +1,189 @@
+@import 'bootstrap';
+@import 'bootstrap-icons';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Work+Sans:wght@300;400;500;700&display=swap');
+
+
+:root {
+    --dark-blue: #00274c;
+    --active-link: #0ebe6a;
+    --body-grey: #6C757D;
+    --grey-5: #9CA3AF;
+    --product-dark-blue: #00274C;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+/* * {
+  border: 1px solid red
+} */
+
+
+.form-control {
+    background-color: rgba(0, 39, 76, 0.03);
+}
+
+.ubuntu {
+    font-family: 'Ubuntu', san-serif;
+}
+
+
+.btn-get-started:hover,
+.btn-get-started:focus {
+    border: 1px solid var(--dark-blue);
+
+}
+
+.btn-get-started {
+    background: var(--dark-blue);
+    color: #fff;
+    font-family: 'Ubuntu', san-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 275px;
+}
+
+.text-input {
+    border: none;
+    width: 100%;
+}
+
+.text-input:hover,
+.text-input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.registration {
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-registration {
+    background: #0ebe6a;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Ubuntu', san-serif;
+}
+
+.btn-registration:hover,
+.btn-registration:focus {
+    background: white;
+    color: var(--active-link);
+    border: 1px solid var(--active-link);
+}
+
+.registration-name {
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+}
+
+.account-heading {
+    font-family: 'Work Sans', sans-serif;
+    color: #6b7280;
+}
+
+.account-form {
+    font-family: 'Ubuntu', san-serif;
+    font-size: 1.5rem;
+    color: #374151;
+}
+
+.account-form-label {
+    font-family: 'Ubuntu', san-serif;
+    color: #00274c;
+}
+
+.email-accent {
+    color: #0ebe6a;
+}
+
+
+#PopularCourses,
+#Testimonials,
+#CourseLibrary,
+#Tutor,
+#Home {
+    position: relative;
+    bottom: 6rem;
+}
+
+.accordion-item {
+    border: none;
+}
+
+.accordion {
+    --bs-accordion-bg: none;
+    --bs-accordion-active-color: none;
+    --bs-accordion-border-color: none;
+}
+
+.accordion-button:focus {
+    border-color: none;
+    box-shadow: none;
+}
+
+.accordion-button {
+    --bs-accordion-active-bg: none;
+
+    --bs-accordion-active-font-weight: bold;
+    --bs-accordion-btn-color: rgba(150, 150, 150, .8);
+    --bs-accordion-border-width: 0;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.accordion [class*="collapsed"] {
+    font-size: .9rem;
+}
+
+/*  New tutor course properties start */
+
+.new-course-label {
+    font-family: 'Work Sans', sans-serif;
+    color: #808080;
+}
+
+.new-course-progress-heading {
+    color: var(--grey-5);
+}
+
+.fade-in {
+    animation: fade-in .3s linear forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0
+    }
+
+    70% {
+        opacity: .6
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.home-logo {
+    width: 115px;
+    height: 34px;
+}
+
+
+
+@media (max-width: 768px) {
+    .registration-input {
+        width: 100% !important;
+    }
+
+}
