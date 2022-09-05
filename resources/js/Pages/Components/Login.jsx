@@ -1,11 +1,14 @@
-import {Link, /*useNavigate*/} from '@inertiajs/inertia-react';
-import {useState, useContext, useRef} from "react";
+import {Link, useForm, /*useNavigate*/} from '@inertiajs/inertia-react';
+import Input from '@/Components/Input';
+import React, {useState, useContext, useRef} from "react";
 import JoinRightWrapper from "@/pages/JoinPages/JoinRightWrapper";
 import imgLogin from "@/images/Registration/img-login.webp";
 import atSign from "@/images/Registration/at-sign.svg";
 import padlock from "@/images/Registration/padlock.svg";
 import JoinNav from "@/pages/JoinPages/JoinNav";
 import AuthContext from "@/store/auth-context";
+import InputError from "@/Components/InputError";
+import Button from "@/Components/Button";
 // import SignUpContext from "../../store/signup-context";
 
 // import LoginButton from "../../Components/LoginButton";
@@ -67,6 +70,22 @@ const Login = () => {
       }
     };*/
 
+    const { data, setData, post, processing, errors, reset } = useForm({
+        email: '',
+        password: '',
+        remember: '',
+    });
+
+    const onHandleChange = (event) => {
+        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+    };
+
+    const submit = (e) => {
+        e.preventDefault();
+
+        post(route('login'));
+    };
+
     return (
         <>
             <style>{`
@@ -127,14 +146,17 @@ const Login = () => {
       }
 
     `}</style>
+            {/*TODO: instead of react router link, we pass to JoinNav route name from ./routes/web.php
+            TODO: remove this comment after acknowledged */}
             <JoinNav to="welcome" button="close"/>
+
             <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
                 <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
                     <div className="col col-md-7 me-md-5 pe-md-5 text-center text-md-start mb-5">
                         <h2 className="account-heading mb-3">Welcome back!</h2>
                         <h3 className="h1 display-5 fw-bold account-form-label">Login</h3>
 
-                        <form className="my-5">
+                        <form className="my-5" onSubmit={submit}>
                             <div
                                 className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
                                 <img
@@ -147,13 +169,18 @@ const Login = () => {
                                 <label className="d-none" htmlFor="login-email">
                                     Enter email
                                 </label>
-                                <input
-                                    id="login-email"
-                                    className="d-block text-input form-control"
-                                    type={"text"}
-                                    placeholder="Enter email"
-                                    ref={emailRef}
+                                <Input
+                                    type="text"
+                                    name="email"
+                                    value={data.email}
+                                    className="d-block text-input"
+                                    autoComplete="username"
+                                    isFocused={true}
+                                    handleChange={onHandleChange}
+                                    placeholder="Enter Email"
                                 />
+                                {/*  TODO: input error msg css neds fix*/}
+                                <InputError message={errors.email} className="mt-0" />
                             </div>
 
                             <div
@@ -168,29 +195,23 @@ const Login = () => {
                                 <label className="d-none" htmlFor="login-password">
                                     Enter password
                                 </label>
-                                <input
-                                    id="login-password"
-                                    className="d-block text-input form-control"
-                                    type={"password"}
+                                <Input
+                                    type="password"
+                                    name="password"
+                                    value={data.password}
+                                    className="d-block text-input"
                                     placeholder="Enter password"
-                                    ref={passRef}
+                                    autoComplete="current-password"
+                                    handleChange={onHandleChange}
                                 />
+                                <br></br>
+                              {/*  TODO: input error msg css neds fix*/}
+                                <InputError message={errors.password} className="mt-0" />
                             </div>
 
-                           {/* TODO: validation message*/}
-                         {/*   {!isValid && (
-                                <p className="text-danger">Invalid username or password</p>
-                            )}*/}
-                        </form>
-
-                        <div className="my-4 login-btn-container">
-                            {/*{!isLoading ? (
-                                <Link
-                                    onClick={submitHandler}
-                                    className="btn-registration btn btn-lg"
-                                    to={"/"}
-                                >
-                                    Login{" "}
+                            <div className="my-4 login-btn-container">
+                                <Button className="btn-registration btn-lg" processing={processing}>
+                                    Log in
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="16"
@@ -205,18 +226,9 @@ const Login = () => {
                                             d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
                                         />
                                     </svg>
-                                </Link>
-                            ) : (
-                                <div className="d-flex align-items-center w-25 h5">
-                                    <strong className="visually-hidden">Loading...</strong>
-                                    <div
-                                        className="spinner-border mx-auto"
-                                        role="status"
-                                        aria-hidden="true"
-                                    ></div>
-                                </div>
-                            )}*/}
-                        </div>
+                                </Button>
+                            </div>
+                        </form>
                     </div>
                     <div className="col col-md-5">
                         <JoinRightWrapper src={imgLogin} alt="person using laptop"/>

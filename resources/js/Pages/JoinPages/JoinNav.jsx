@@ -5,6 +5,7 @@ import backBtn from "../../images/Registration/arrow-left.svg";
 
 const JoinNav = (props) => {
   console.log("navbar rendered");
+  console.log(props.to);
   return (
     <>
       <style>{`
@@ -56,7 +57,7 @@ const JoinNav = (props) => {
       <header className="container-fluid">
         <nav className="container navbar navbar-expand-lg navbar-light bg-white fixed-top w-100 d-flex align-items-center justify-content-between p-2 pt-4">
           {props.button === "close" ? (
-            <Link to={props.to}>
+            <Link href={route(props.to)}>
               <img
                 id="registration-close-btn"
                 src={closeBtn}
@@ -67,7 +68,7 @@ const JoinNav = (props) => {
             </Link>
           ) : (
             <div className="registration-back-btn-container col">
-              <Link className="registration-back-btn" to={props.to}>
+              <Link className="registration-back-btn" href={route(props.to)}>
                 <img
                   id="registration-back-btn"
                   src={backBtn}

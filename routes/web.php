@@ -25,7 +25,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -37,8 +37,8 @@ Route::middleware('guest')->group(function () {
         ->name('join');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
-    Route::post('login', [LoginController::class, 'store']);
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login'); //from auth.php
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });
 
 
