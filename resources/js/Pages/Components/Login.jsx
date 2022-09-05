@@ -1,80 +1,26 @@
 import {Link, useForm, /*useNavigate*/} from '@inertiajs/inertia-react';
 import Input from '@/Components/Input';
-import React, {useState, useContext, useRef} from "react";
 import JoinRightWrapper from "@/pages/JoinPages/JoinRightWrapper";
 import imgLogin from "@/images/Registration/img-login.webp";
 import atSign from "@/images/Registration/at-sign.svg";
 import padlock from "@/images/Registration/padlock.svg";
 import JoinNav from "@/pages/JoinPages/JoinNav";
-import AuthContext from "@/store/auth-context";
 import InputError from "@/Components/InputError";
 import Button from "@/Components/Button";
-// import SignUpContext from "../../store/signup-context";
-
-// import LoginButton from "../../Components/LoginButton";
-const Login = () => {
+const Login = (props) => {
     console.log("login rendered");
-    const passRef = useRef();
-    const emailRef = useRef();
-    //const navigate = useNavigate();
-    //const authCTX = useContext(AuthContext);
-    // const sighupCTX = useContext(SignUpContext);
-    //const [isValid, setIsValid] = useState(true);
-    //const [isLoading, setIsLoading] = useState(false);
-
-    /*const submitHandler = async (e) => {
-      e.preventDefault();
-      console.log("login fetch started");
-      const loginData = {
-        email: emailRef.current.value,
-        password: passRef.current.value,
-      };
-      const settings = {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      };
-      console.log(JSON.stringify(loginData));
-      try {
-        setIsLoading(true);
-        const formResponse = await fetch(
-          "https://tlancer.herokuapp.com/api/login",
-          settings
-        );
-        if (!formResponse.ok) {
-          setIsLoading(false);
-          throw new Error("error during submission");
-        } else {
-          const data = await formResponse.json();
-          setIsLoading(false);
-          if (data.success) {
-            authCTX.userLogIn();
-            authCTX.setName(data.data.first_name);
-            authCTX.setAccount(data.data.type);
-            authCTX.login(localStorage.getItem("token"));
-            console.log("verified == true");
-          } else {
-            setIsValid(false);
-            setIsLoading(false);
-            console.log("not valid values: " + data.data);
-          }
-          console.log("response data: " + JSON.stringify(data));
-          console.log(data.data.verified);
-          /!*navigate(`/${data.data.type}`);*!/
-        }
-      } catch (e) {
-        console.log("error: " + e);
-      }
-    };*/
 
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
         remember: '',
     });
+
+    /*TODO: must changed from quote_en/quote_ka by localization*/
+
+    const quote = props.quote.quote_en;
+
+    console.log(quote);
 
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
@@ -232,11 +178,11 @@ const Login = () => {
                     </div>
                     <div className="col col-md-5">
                         <JoinRightWrapper src={imgLogin} alt="person using laptop"/>
+                        {/*TODO: need to implement Localization for double language*/}
                         <div className="quote-container">
                             <h4>Quote of the day</h4>
                             <p>
-                                Hackton is the leading online coding tutor for beginners join us
-                                today to take a step further.
+                                {quote}
                             </p>
                         </div>
                     </div>
