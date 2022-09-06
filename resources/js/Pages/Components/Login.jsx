@@ -110,7 +110,7 @@ const Login = (props) => {
                         </h3>
 
                         <form className="my-5" onSubmit={submit}>
-                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group position-relative">
+                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
                                 <img
                                     className="me-3"
                                     src={atSign}
@@ -131,44 +131,37 @@ const Login = (props) => {
                                     handleChange={onHandleChange}
                                     placeholder="Enter Email"
                                 />
-                                {/*  TODO: input error msg css neds fix*/}
-                                <InputError
-                                    message={errors.email}
-                                    className="mt-0 position-absolute bottom-0 m-0 error-msg"
+                            </div>
+
+                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
+                                <img
+                                    className="me-3"
+                                    src={padlock}
+                                    alt="padlock icon"
+                                    width="24"
+                                    height="24"
+                                />
+                                <label
+                                    className="d-none"
+                                    htmlFor="login-password"
+                                >
+                                    Enter password
+                                </label>
+                                <Input
+                                    type="password"
+                                    name="password"
+                                    value={data.password}
+                                    className="d-block text-input"
+                                    placeholder="Enter password"
+                                    autoComplete="current-password"
+                                    handleChange={onHandleChange}
                                 />
                             </div>
 
-                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group position-relative">
-                                <div>
-                                    <img
-                                        className="me-3"
-                                        src={padlock}
-                                        alt="padlock icon"
-                                        width="24"
-                                        height="24"
-                                    />
-                                    <label
-                                        className="d-none"
-                                        htmlFor="login-password"
-                                    >
-                                        Enter password
-                                    </label>
-                                    <Input
-                                        type="password"
-                                        name="password"
-                                        value={data.password}
-                                        className="d-block text-input"
-                                        placeholder="Enter password"
-                                        autoComplete="current-password"
-                                        handleChange={onHandleChange}
-                                    />
-                                    {/*  TODO: input error msg css neds fix*/}
-                                    <InputError
-                                        message={errors.password}
-                                        className="mt-0 position-absolute bottom-0 m-0 error-msg"
-                                    />
-                                </div>
-                            </div>
+                            <InputError
+                                message={errors.email}
+                                className="mt-0 mb-5"
+                            />
 
                             <div className="my-4 login-btn-container">
                                 <Button
