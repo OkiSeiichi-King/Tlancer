@@ -1,5 +1,5 @@
-import {Link, useForm, /*useNavigate*/} from '@inertiajs/inertia-react';
-import Input from '@/Components/Input';
+import { Link, useForm /*useNavigate*/ } from "@inertiajs/inertia-react";
+import Input from "@/Components/Input";
 import JoinRightWrapper from "@/pages/JoinPages/JoinRightWrapper";
 import imgLogin from "@/images/Registration/img-login.webp";
 import atSign from "@/images/Registration/at-sign.svg";
@@ -11,9 +11,9 @@ const Login = (props) => {
     console.log("login rendered");
 
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
-        password: '',
-        remember: '',
+        email: "",
+        password: "",
+        remember: "",
     });
 
     /*TODO: must changed from quote_en/quote_ka by localization*/
@@ -23,13 +23,18 @@ const Login = (props) => {
     console.log(quote);
 
     const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+        setData(
+            event.target.name,
+            event.target.type === "checkbox"
+                ? event.target.checked
+                : event.target.value
+        );
     };
 
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('login'));
+        post(route("login"));
     };
 
     return (
@@ -94,17 +99,18 @@ const Login = (props) => {
     `}</style>
             {/*TODO: instead of react router link, we pass to JoinNav route name from ./routes/web.php
             TODO: remove this comment after acknowledged */}
-            <JoinNav to="welcome" button="close"/>
+            <JoinNav to="welcome" button="close" />
 
             <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
                 <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
                     <div className="col col-md-7 me-md-5 pe-md-5 text-center text-md-start mb-5">
                         <h2 className="account-heading mb-3">Welcome back!</h2>
-                        <h3 className="h1 display-5 fw-bold account-form-label">Login</h3>
+                        <h3 className="h1 display-5 fw-bold account-form-label">
+                            Login
+                        </h3>
 
                         <form className="my-5" onSubmit={submit}>
-                            <div
-                                className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
+                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group position-relative">
                                 <img
                                     className="me-3"
                                     src={atSign}
@@ -126,37 +132,49 @@ const Login = (props) => {
                                     placeholder="Enter Email"
                                 />
                                 {/*  TODO: input error msg css neds fix*/}
-                                <InputError message={errors.email} className="mt-0" />
+                                <InputError
+                                    message={errors.email}
+                                    className="mt-0 position-absolute bottom-0 m-0 error-msg"
+                                />
                             </div>
 
-                            <div
-                                className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
-                                <img
-                                    className="me-3"
-                                    src={padlock}
-                                    alt="padlock icon"
-                                    width="24"
-                                    height="24"
-                                />
-                                <label className="d-none" htmlFor="login-password">
-                                    Enter password
-                                </label>
-                                <Input
-                                    type="password"
-                                    name="password"
-                                    value={data.password}
-                                    className="d-block text-input"
-                                    placeholder="Enter password"
-                                    autoComplete="current-password"
-                                    handleChange={onHandleChange}
-                                />
-                                <br></br>
-                              {/*  TODO: input error msg css neds fix*/}
-                                <InputError message={errors.password} className="mt-0" />
+                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group position-relative">
+                                <div>
+                                    <img
+                                        className="me-3"
+                                        src={padlock}
+                                        alt="padlock icon"
+                                        width="24"
+                                        height="24"
+                                    />
+                                    <label
+                                        className="d-none"
+                                        htmlFor="login-password"
+                                    >
+                                        Enter password
+                                    </label>
+                                    <Input
+                                        type="password"
+                                        name="password"
+                                        value={data.password}
+                                        className="d-block text-input"
+                                        placeholder="Enter password"
+                                        autoComplete="current-password"
+                                        handleChange={onHandleChange}
+                                    />
+                                    {/*  TODO: input error msg css neds fix*/}
+                                    <InputError
+                                        message={errors.password}
+                                        className="mt-0 position-absolute bottom-0 m-0 error-msg"
+                                    />
+                                </div>
                             </div>
 
                             <div className="my-4 login-btn-container">
-                                <Button className="btn-registration btn-lg" processing={processing}>
+                                <Button
+                                    className="btn-registration btn-lg"
+                                    processing={processing}
+                                >
                                     Log in
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +183,7 @@ const Login = (props) => {
                                         fill="currentColor"
                                         className="bi bi-arrow-down ms-5"
                                         viewBox="0 0 16 16"
-                                        style={{transform: "rotate(-90deg)"}}
+                                        style={{ transform: "rotate(-90deg)" }}
                                     >
                                         <path
                                             fillRule="evenodd"
@@ -177,13 +195,14 @@ const Login = (props) => {
                         </form>
                     </div>
                     <div className="col col-md-5">
-                        <JoinRightWrapper src={imgLogin} alt="person using laptop"/>
+                        <JoinRightWrapper
+                            src={imgLogin}
+                            alt="person using laptop"
+                        />
                         {/*TODO: need to implement Localization for double language*/}
                         <div className="quote-container">
                             <h4>Quote of the day</h4>
-                            <p>
-                                {quote}
-                            </p>
+                            <p>{quote}</p>
                         </div>
                     </div>
                 </div>
