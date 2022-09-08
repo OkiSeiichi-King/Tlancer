@@ -1,15 +1,21 @@
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
 import logo from "../../images/logo.webp";
-import { usePage } from '@inertiajs/inertia-react'
-import { Trans } from "../Localization/Trans"
+import { usePage } from "@inertiajs/inertia-react";
+import { Trans } from "../Localization/Trans";
 
 const Navbar = () => {
     let user = usePage().props.auth.user;
 
     const languageBtn = (
-        <li id="lang-btn-list-item" className="d-flex">
-            <button className="btn btn-lang mx-auto my-auto ms-lg-4">
+        <li id="lang-btn-list-item" className="d-flex dropdown">
+            <button
+                className="nav-link dropdown-toggle border-0"
+                type="button"
+                href="#"
+                id="navbardrop"
+                data-bs-toggle="dropdown"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -22,6 +28,10 @@ const Navbar = () => {
                 </svg>
                 Eng
             </button>
+            <ul className="dropdown-menu">
+                <a className="dropdown-item">Eng</a>
+                <a className="dropdown-item">Ka</a>
+            </ul>
         </li>
     );
 
@@ -194,7 +204,7 @@ const Navbar = () => {
                                         className={"nav-link text-nowrap"}
                                         href="#CourseLibrary"
                                     >
-                                        {Trans('Explore')}
+                                        {Trans("Explore")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -202,7 +212,7 @@ const Navbar = () => {
                                         className={"nav-link text-nowrap"}
                                         href="#Tutor"
                                     >
-                                        {Trans('Tutor')}
+                                        {Trans("Tutor")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -210,16 +220,19 @@ const Navbar = () => {
                                         className={"nav-link text-nowrap"}
                                         href="#Testimonials"
                                     >
-                                        {Trans('Testimonials')}
+                                        {Trans("Testimonials")}
                                     </a>
                                 </li>
 
                                 {user && (
                                     <li className="nav-btn-container">
-                                        <Link href={route('logout')} method="post" as="button"
-                                            className="btn btn-nav btn-lg join mx-auto ms-lg-4"
+                                        <Link
+                                            href={route("logout")}
+                                            method="post"
+                                            as="button"
+                                            className="btn btn-lg w-100 join mx-auto ms-lg-4"
                                         >
-                                            { Trans('Logout') }
+                                            {Trans("Logout")}
                                         </Link>
                                     </li>
                                 )}
@@ -228,9 +241,9 @@ const Navbar = () => {
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("join")}
-                                            className="btn btn-nav btn-lg join mx-auto ms-lg-4"
+                                            className="btn btn-nav w-100 btn-lg join mx-auto ms-lg-4"
                                         >
-                                            {Trans('Join')}
+                                            {Trans("Join")}
                                         </Link>
                                     </li>
                                 )}
@@ -239,9 +252,9 @@ const Navbar = () => {
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("login")}
-                                            className="btn btn-nav login mx-auto ms-lg-4"
+                                            className="btn btn-nav w-100 login mx-auto ms-lg-4"
                                         >
-                                            { Trans('Login') }
+                                            {Trans("Login")}
                                             <svg
                                                 id="nav-login-arrow"
                                                 xmlns="http://www.w3.org/2000/svg"
