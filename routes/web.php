@@ -45,4 +45,11 @@ Route::middleware('guest')->group(function () {
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
+Route::get('language/{language}', function ($language) {
+    Session()->put('locale', $language);
+
+    return redirect()->back();
+})->name('language');
+
 /*require __DIR__.'/auth.php';*/
+Inertia::share('appName', config('app.name'));

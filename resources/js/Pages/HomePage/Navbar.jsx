@@ -1,14 +1,9 @@
-import { Link /*useNavigate*/ } from "@inertiajs/inertia-react";
-import { useContext } from "react";
-// import CustomLink from "./CustomLink";
-import logo from "../../images/logo.webp";
-import AuthContext from "../../store/auth-context";
 import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/inertia-react";
+import logo from "../../images/logo.webp";
+import { Trans } from "../Localization/Trans"
 
 const Navbar = (props) => {
-    //TODO:must remove 1st .props pased from home component
-    //console.log(props.props)
-    console.log("navbar rendered!");
 
     const languageBtn = (
         <li id="lang-btn-list-item" className="d-flex">
@@ -146,7 +141,7 @@ const Navbar = (props) => {
                                     id="login-mobile"
                                     className="btn btn-nav btn-lg ms-auto me-3 fw-bold text-nowrap"
                                 >
-                                    login
+                                    {Trans("Login")}
                                     <svg
                                         id="nav-login-arrow"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +179,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#Home"
                                     >
-                                        Home
+                                        {Trans("Home")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -192,7 +187,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#PopularCourses"
                                     >
-                                        Popular
+                                        {Trans("Popular")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -200,7 +195,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#CourseLibrary"
                                     >
-                                        Explore
+                                        {Trans('Explore')}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -208,7 +203,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#Tutor"
                                     >
-                                        Tutor
+                                        {Trans('Tutor')}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -216,7 +211,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#Testimonials"
                                     >
-                                        Testimonials
+                                        {Trans('Testimonials')}
                                     </a>
                                 </li>
 
@@ -237,7 +232,7 @@ const Navbar = (props) => {
                                             href={route("join")}
                                             className="btn btn-nav btn-lg join mx-auto ms-lg-4"
                                         >
-                                            Join
+                                            {Trans('Join')}
                                         </Link>
                                     </li>
                                 )}

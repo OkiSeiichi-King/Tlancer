@@ -13,8 +13,8 @@ import Tlancer from '@/Layouts/Tlancer';
 
 
 const Home = (props) => {
-    console.log("home rendered");
-
+  /*  console.log("home rendered");
+    console.log(props);*/
     return (
 
         <Tlancer>
