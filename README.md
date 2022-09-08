@@ -42,7 +42,7 @@ You can pass parameters to this route like:
 
 Where **language** is route name and **en** is parameter which indicates on language you want to set.
 
-language translations ar lokated in ./lang folder. 
+language translations ar located in ./lang folder. 
 currently we only have ka.json where the translations are writen 
 
 you can make a new translation like this:

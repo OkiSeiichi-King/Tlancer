@@ -1,9 +1,11 @@
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
 import logo from "../../images/logo.webp";
+import { usePage } from '@inertiajs/inertia-react'
 import { Trans } from "../Localization/Trans"
 
-const Navbar = (props) => {
+const Navbar = () => {
+    let auth = usePage().props;
 
     const languageBtn = (
         <li id="lang-btn-list-item" className="d-flex">
@@ -135,7 +137,7 @@ const Navbar = (props) => {
                                 />
                             </Link>
 
-                            {!props.props.auth.user && (
+                            {!auth.user && (
                                 <Link
                                     href={route("login")}
                                     id="login-mobile"
@@ -215,7 +217,7 @@ const Navbar = (props) => {
                                     </a>
                                 </li>
 
-                                {props.props.auth.user && (
+                                {auth.user && (
                                     <li className="nav-btn-container">
                                         <button
                                             onClick={() => logoutHandler}
@@ -226,7 +228,7 @@ const Navbar = (props) => {
                                     </li>
                                 )}
 
-                                {!props.props.auth.user && (
+                                {!auth.user && (
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("join")}
@@ -237,7 +239,7 @@ const Navbar = (props) => {
                                     </li>
                                 )}
 
-                                {!props.props.auth.user && (
+                                {!auth.user && (
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("login")}

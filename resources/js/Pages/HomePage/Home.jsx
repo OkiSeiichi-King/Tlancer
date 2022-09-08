@@ -1,13 +1,13 @@
 import Navbar from "./Navbar";
 import Hero from "./Hero";
-import PopularCourses from "../../Components/PopularCourses/PopularCourses";
+//import PopularCourses from "../../Components/PopularCourses/PopularCourses";
+import PopularCourses from "@/Components/PopularCourses/PopularCourses";
 import Divider from "./Divider";
-import ExploreCourses from "../../Components/ExploreCourses/ExploreCourses/ExploreCourses";
+import ExploreCourses from "@/Components/ExploreCourses/ExploreCourses/ExploreCourses";
 import Tutors from "./Tutors";
 // import Tips from "./Tips/Tips";
 import Testimonies from "./Testimonies";
 // import Newsletter from "./Newsletter";
-import FooterLinks from "./FooterLinks";
 import React from "react";
 import Tlancer from '@/Layouts/Tlancer';
 
