@@ -1,14 +1,11 @@
-import { Link /*useNavigate*/ } from "@inertiajs/inertia-react";
-import { useContext } from "react";
-// import CustomLink from "./CustomLink";
-import logo from "../../images/logo.webp";
-import AuthContext from "../../store/auth-context";
 import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/inertia-react";
+import logo from "../../images/logo.webp";
+import { usePage } from '@inertiajs/inertia-react'
+import { Trans } from "../Localization/Trans"
 
-const Navbar = (props) => {
-    //TODO:must remove 1st .props pased from home component
-    //console.log(props.props)
-    console.log("navbar rendered!");
+const Navbar = () => {
+    let user = usePage().props.auth.user;
 
     const languageBtn = (
         <li id="lang-btn-list-item" className="d-flex">
@@ -28,9 +25,6 @@ const Navbar = (props) => {
         </li>
     );
 
-    const logoutHandler = () => {
-        Inertia.post("logout");
-    };
     return (
         <>
             <style>{`
@@ -140,13 +134,13 @@ const Navbar = (props) => {
                                 />
                             </Link>
 
-                            {!props.props.auth.user && (
+                            {!user && (
                                 <Link
                                     href={route("login")}
                                     id="login-mobile"
                                     className="btn btn-nav btn-lg ms-auto me-3 fw-bold text-nowrap"
                                 >
-                                    login
+                                    {Trans("Login")}
                                     <svg
                                         id="nav-login-arrow"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +178,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#Home"
                                     >
-                                        Home
+                                        {Trans("Home")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -192,7 +186,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#PopularCourses"
                                     >
-                                        Popular
+                                        {Trans("Popular")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -200,7 +194,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#CourseLibrary"
                                     >
-                                        Explore
+                                        {Trans('Explore')}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -208,7 +202,7 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#Tutor"
                                     >
-                                        Tutor
+                                        {Trans('Tutor')}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -216,39 +210,38 @@ const Navbar = (props) => {
                                         className={"nav-link text-nowrap"}
                                         href="#Testimonials"
                                     >
-                                        Testimonials
+                                        {Trans('Testimonials')}
                                     </a>
                                 </li>
 
-                                {props.props.auth.user && (
+                                {user && (
                                     <li className="nav-btn-container">
-                                        <button
-                                            onClick={() => logoutHandler}
+                                        <Link href={route('logout')} method="post" as="button"
                                             className="btn btn-nav btn-lg join mx-auto ms-lg-4"
                                         >
-                                            Logout
-                                        </button>
+                                            { Trans('Logout') }
+                                        </Link>
                                     </li>
                                 )}
 
-                                {!props.props.auth.user && (
+                                {!user && (
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("join")}
                                             className="btn btn-nav btn-lg join mx-auto ms-lg-4"
                                         >
-                                            Join
+                                            {Trans('Join')}
                                         </Link>
                                     </li>
                                 )}
 
-                                {!props.props.auth.user && (
+                                {!user && (
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("login")}
                                             className="btn btn-nav login mx-auto ms-lg-4"
                                         >
-                                            login
+                                            { Trans('Login') }
                                             <svg
                                                 id="nav-login-arrow"
                                                 xmlns="http://www.w3.org/2000/svg"

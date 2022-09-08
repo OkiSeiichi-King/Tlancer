@@ -8,19 +8,15 @@ import JoinNav from "@/pages/JoinPages/JoinNav";
 import InputError from "@/Components/InputError";
 import Button from "@/Components/Button";
 const Login = (props) => {
-    console.log("login rendered");
-
+    //console.log("login rendered");
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
         remember: "",
     });
 
-    /*TODO: must changed from quote_en/quote_ka by localization*/
-
-    const quote = props.quote.quote_en;
-
-    console.log(quote);
+    let quote_field = "quote_" + props.locale;
+    const quote = props.quote[quote_field];
 
     const onHandleChange = (event) => {
         setData(

@@ -27,6 +27,18 @@ class HandleInertiaRequests extends Middleware
     }
 
     /**
+     * @param $json
+     * @return array|mixed
+     */
+    private function translations($json)
+    {
+        if(!file_exists($json)) {
+            return [];
+        }
+        return json_decode(file_get_contents($json), true);
+    }
+
+    /**
      * Define the props that are shared by default.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,6 +49,14 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
+                'locale' => function () {
+                    return app()->getLocale();
+                },
+                'language' => function () {
+                    return $this->translations(
+                        app_path('../lang/' . app()->getLocale() . '.json')
+                    );
+                }
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [

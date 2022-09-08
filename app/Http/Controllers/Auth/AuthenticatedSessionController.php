@@ -43,7 +43,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        //TODO: must create logics to redirect student, tutor and parent in their pages
+        //return redirect()->intended(RouteServiceProvider::HOME);
+
+        return redirect()->intended(RouteServiceProvider::TutorHome);
+
     }
 
     /**
