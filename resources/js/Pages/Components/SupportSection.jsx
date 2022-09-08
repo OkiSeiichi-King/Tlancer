@@ -1,4 +1,4 @@
-import JoinRightWrapper from "../pages/JoinPages/JoinRightWrapper";
+import JoinRightWrapper from "../JoinPages/JoinRightWrapper";
 import supportImg from "../images/Tutors/tutorSupport.webp";
 const TutorSupportSection = () => {
   const submitHandler = () => {

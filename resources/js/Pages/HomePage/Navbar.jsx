@@ -5,7 +5,7 @@ import { usePage } from '@inertiajs/inertia-react'
 import { Trans } from "../Localization/Trans"
 
 const Navbar = () => {
-    let auth = usePage().props;
+    let user = usePage().props.auth.user;
 
     const languageBtn = (
         <li id="lang-btn-list-item" className="d-flex">
@@ -25,9 +25,6 @@ const Navbar = () => {
         </li>
     );
 
-    const logoutHandler = () => {
-        Inertia.post("logout");
-    };
     return (
         <>
             <style>{`
@@ -137,7 +134,7 @@ const Navbar = () => {
                                 />
                             </Link>
 
-                            {!auth.user && (
+                            {!user && (
                                 <Link
                                     href={route("login")}
                                     id="login-mobile"
@@ -217,18 +214,17 @@ const Navbar = () => {
                                     </a>
                                 </li>
 
-                                {auth.user && (
+                                {user && (
                                     <li className="nav-btn-container">
-                                        <button
-                                            onClick={() => logoutHandler}
+                                        <Link href={route('logout')} method="post" as="button"
                                             className="btn btn-nav btn-lg join mx-auto ms-lg-4"
                                         >
-                                            Logout
-                                        </button>
+                                            { Trans('Logout') }
+                                        </Link>
                                     </li>
                                 )}
 
-                                {!auth.user && (
+                                {!user && (
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("join")}
@@ -239,13 +235,13 @@ const Navbar = () => {
                                     </li>
                                 )}
 
-                                {!auth.user && (
+                                {!user && (
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("login")}
                                             className="btn btn-nav login mx-auto ms-lg-4"
                                         >
-                                            login
+                                            { Trans('Login') }
                                             <svg
                                                 id="nav-login-arrow"
                                                 xmlns="http://www.w3.org/2000/svg"
