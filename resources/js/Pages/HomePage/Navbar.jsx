@@ -1,15 +1,28 @@
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
 import logo from "../../images/logo.webp";
-import { usePage } from '@inertiajs/inertia-react'
-import { Trans } from "../Localization/Trans"
+import { usePage } from "@inertiajs/inertia-react";
+import { Trans } from "../Localization/Trans";
+import { useState } from "react";
+
+const localTypes = {
+    Eng: "Eng",
+    Ka: "Ka",
+};
 
 const Navbar = () => {
     let user = usePage().props.auth.user;
-
+    let auth = usePage().props.auth;
+    console.log(auth);
     const languageBtn = (
-        <li id="lang-btn-list-item" className="d-flex">
-            <button className="btn btn-lang mx-auto my-auto ms-lg-4">
+        <li id="lang-btn-list-item" className="d-flex dropdown">
+            <button
+                className="nav-link dropdown-toggle border-0"
+                type="button"
+                href="#"
+                id="navbardrop"
+                data-bs-toggle="dropdown"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -20,8 +33,16 @@ const Navbar = () => {
                 >
                     <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
                 </svg>
-                Eng
+                {auth.locale}
             </button>
+            <ul className="dropdown-menu">
+                <a className="dropdown-item" href={route("language", "en")}>
+                    {localTypes.Eng}
+                </a>
+                <a className="dropdown-item" href={route("language", "ka")}>
+                    {localTypes.Ka}
+                </a>
+            </ul>
         </li>
     );
 
@@ -161,8 +182,8 @@ const Navbar = () => {
                             <button
                                 className="navbar-toggler"
                                 type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#navbar"
+                                data-toggle="collapse"
+                                data-target="#navbar"
                                 aria-controls="navbar"
                                 aria-expanded="false"
                                 aria-label="Toggle navigation"
@@ -194,7 +215,7 @@ const Navbar = () => {
                                         className={"nav-link text-nowrap"}
                                         href="#CourseLibrary"
                                     >
-                                        {Trans('Explore')}
+                                        {Trans("Explore")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -202,7 +223,7 @@ const Navbar = () => {
                                         className={"nav-link text-nowrap"}
                                         href="#Tutor"
                                     >
-                                        {Trans('Tutor')}
+                                        {Trans("Tutor")}
                                     </a>
                                 </li>
                                 <li className="nav-item">
@@ -210,16 +231,19 @@ const Navbar = () => {
                                         className={"nav-link text-nowrap"}
                                         href="#Testimonials"
                                     >
-                                        {Trans('Testimonials')}
+                                        {Trans("Testimonials")}
                                     </a>
                                 </li>
 
                                 {user && (
                                     <li className="nav-btn-container">
-                                        <Link href={route('logout')} method="post" as="button"
-                                            className="btn btn-nav btn-lg join mx-auto ms-lg-4"
+                                        <Link
+                                            href={route("logout")}
+                                            method="post"
+                                            as="button"
+                                            className="btn btn-lg w-100 join mx-auto ms-lg-4"
                                         >
-                                            { Trans('Logout') }
+                                            {Trans("Logout")}
                                         </Link>
                                     </li>
                                 )}
@@ -228,9 +252,9 @@ const Navbar = () => {
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("join")}
-                                            className="btn btn-nav btn-lg join mx-auto ms-lg-4"
+                                            className="btn btn-nav w-100 btn-lg join mx-auto ms-lg-4"
                                         >
-                                            {Trans('Join')}
+                                            {Trans("Join")}
                                         </Link>
                                     </li>
                                 )}
@@ -239,9 +263,9 @@ const Navbar = () => {
                                     <li className="nav-btn-container">
                                         <Link
                                             href={route("login")}
-                                            className="btn btn-nav login mx-auto ms-lg-4"
+                                            className="btn btn-nav w-100 login mx-auto ms-lg-4"
                                         >
-                                            { Trans('Login') }
+                                            {Trans("Login")}
                                             <svg
                                                 id="nav-login-arrow"
                                                 xmlns="http://www.w3.org/2000/svg"
