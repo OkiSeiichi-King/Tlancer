@@ -1,46 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Head, Link, useForm} from '@inertiajs/inertia-react';
 import Tlancer from "@/Layouts/Tlancer";
-import Navbar from "@/Pages/HomePage/Navbar";
+import logo from "../../images/logo.webp";
+import ChooseAccount from '../JoinPages/ChooseAccount';
+import closeBtn from "../../images/Registration/blueX.svg";
+import JoinEmail from "@/Pages/JoinPages/JoinEmail";
+import JoinNav from "@/Pages/JoinPages/JoinNav";
 
 export default function Register(props) {
-    console.log(props);
-    const {data, setData, post, processing, errors, reset} = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-    });
 
-    useEffect(() => {
-        return () => {
-            reset('password', 'password_confirmation');
-        };
-    }, []);
-
-    const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
-    };
-
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route('register'));
-    };
 
     return (
         <>
-        <Navbar props={props}/>
-        <Tlancer>
+            <Tlancer>
 
-            <Head title="join"/>
+                <JoinNav to="welcome" button="close" />
 
-            <form onSubmit={submit}>
-                <div className="form-group mt-5">
-                    awdawdawd
-                </div>
-            </form>
-        </Tlancer>
+                <JoinEmail/>
+                {/* <ChooseAccount/>*/}
+            </Tlancer>
         </>
     );
 }

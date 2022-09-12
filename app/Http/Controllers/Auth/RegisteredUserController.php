@@ -24,6 +24,36 @@ class RegisteredUserController extends Controller
         return Inertia::render('Auth/Register');
     }
 
+    public function show_name()
+    {
+        return Inertia::render('JoinPages/JoinName');
+    }
+
+    public function birth()
+    {
+        return Inertia::render('JoinPages/JoinDateOfBirth');
+    }
+
+    public function location()
+    {
+        return Inertia::render('JoinPages/JoinLocation');
+    }
+
+    public function phone_number()
+    {
+        return Inertia::render('JoinPages/JoinPhoneNumber');
+    }
+
+    public function password()
+    {
+        return Inertia::render('JoinPages/JoinPassword');
+    }
+
+    public function email()
+    {
+        return Inertia::render('JoinPages/JoinEmail');
+    }
+
     /**
      * Handle an incoming registration request.
      *
@@ -34,7 +64,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        dd("response from backend". $request);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',

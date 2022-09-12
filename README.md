@@ -12,7 +12,7 @@ Installation:
 
 - cd /to folder where you want to install this app (for example: cd /desktop/new folder)
 - git init
-- git add "this repository"
+- git remote add origin https://github.com/Tlancerinc/tlancer_mvc.git
 - git pull
 - cd /inside downloaded project
 - composer install

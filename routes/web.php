@@ -42,6 +42,19 @@ Route::middleware('guest')->group(function () {
     Route::get('join', [RegisteredUserController::class, 'create'])
         ->name('join');
 
+    Route::get('email', [RegisteredUserController::class, 'email'])
+        ->name('email');
+    Route::get('name', [RegisteredUserController::class, 'show_name'])
+        ->name('show_name');
+    Route::get('date-of-birth', [RegisteredUserController::class, 'birth'])
+        ->name('birth');
+    Route::get('location', [RegisteredUserController::class, 'location'])
+        ->name('show-location');
+    Route::get('phone-number', [RegisteredUserController::class, 'phone_number'])
+        ->name('phone-number');
+    Route::get('password', [RegisteredUserController::class, 'password'])
+        ->name('password');
+
     Route::post('register', [RegisteredUserController::class, 'store']);
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login'); //from auth.php
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
