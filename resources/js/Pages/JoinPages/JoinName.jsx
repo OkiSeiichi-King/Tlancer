@@ -4,17 +4,14 @@ import JoinNav from "./JoinNav";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-2.webp";
 import personIcon from "../../images/Registration/person-icon.svg";
-import ValueChecker from "../../helperFunctions/ValueChecker";
-import SignupContext from "../../store/signup-context";
 const JoinName = (props) => {
-    console.log("names rendered");
-    const signupCTX = useContext(SignupContext);
-    const [fName, setFName] = useState("");
-    const [lName, setLName] = useState("");
+
+    const [fName, setFName] = useState();
+    const [lName, setLName] = useState();
+
     const onClickHandler = () => {
-        signupCTX.actions.firstNameHandler(fName);
-        signupCTX.actions.lastNameHandler(lName);
-    };
+        console.log('working')
+    }
 
     return (
         <>
@@ -23,7 +20,7 @@ const JoinName = (props) => {
 
 
     `}</style>
-            <JoinNav to="/account" button="back" />
+            <JoinNav to="name" button="back" />
             <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
                 <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
                     <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
@@ -69,7 +66,7 @@ const JoinName = (props) => {
                                     placeholder="Last Name"
                                 />
                             </div>
-                            {!ValueChecker(fName) || !ValueChecker(lName) ? (
+                            {!(fName) || !(lName) ? (
                                 <button disabled className="btn-registration btn btn-lg">
                                     Continue{" "}
                                     <svg
@@ -88,7 +85,7 @@ const JoinName = (props) => {
                                     </svg>
                                 </button>
                             ) : (
-                                <Link to={"/date-of-birth"}>
+                                <Link href='date-of-birth'>
                                     <button
                                         onClick={onClickHandler}
                                         className="btn-registration btn btn-lg"

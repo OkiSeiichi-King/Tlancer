@@ -2,15 +2,17 @@ import { useState, useContext } from "react";
 import { Link } from '@inertiajs/inertia-react';
 import JoinRightWrapper from "../JoinPages/JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup.webp";
-// import JoinNav from "./JoinNav";
-import JoinNav from "../JoinPages/JoinNav";
-import SignupContext from "../../store/signup-context";
+import logo from "../../images/logo.webp";
+import JoinNav from "./JoinNav";
+import closeBtn from "../../images/Registration/blueX.svg";
+// import backBtn from "../../images/Registration/arrow-left.svg";
+
+
 const ChooseAccount = (props) => {
     console.log("choose account rendered");
 
     const [entry, setEntry] = useState("");
     const [isValid, setIsValid] = useState(false);
-    const signupCTX = useContext(SignupContext);
     console.log("entry: " + entry);
     console.log("isValid: " + isValid);
 
@@ -24,8 +26,7 @@ const ChooseAccount = (props) => {
       }
 
     `}</style>
-
-
+    <JoinNav to='account' button='/'/>
             <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
                 <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
                     <div className="col col-md-7 me-md-5 pe-md-5 text-center text-md-start mb-5">
@@ -78,11 +79,9 @@ const ChooseAccount = (props) => {
                                     </svg>
                                 </button>
                             ) : (
-                                <Link href="email">
+                                <Link href="name">
                                     <button
-                                        onClick={() => {
-                                            signupCTX.actions.accountHandler(entry);
-                                        }}
+                                 
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}

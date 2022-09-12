@@ -18,16 +18,16 @@ use Inertia\Inertia;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return Inertia::render('HomePage/Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-})->name('welcome')*/;
+})->name('welcome');
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 
 Route::group(['middleware' => ['auth', 'verified']],function(){
     Route::get('/dashboard', function () {
@@ -41,21 +41,23 @@ Route::group(['middleware' => ['auth', 'verified']],function(){
 Route::middleware('guest')->group(function () {
     Route::get('join', [RegisteredUserController::class, 'create'])
         ->name('join');
-
+        Route::get('account', [RegisteredUserController::class, 'account'])
+            ->name('account');
     Route::get('email', [RegisteredUserController::class, 'email'])
         ->name('email');
     Route::get('name', [RegisteredUserController::class, 'show_name'])
-        ->name('show_name');
+        ->name('name');
     Route::get('date-of-birth', [RegisteredUserController::class, 'birth'])
-        ->name('birth');
+        ->name('date-of-birth');
     Route::get('location', [RegisteredUserController::class, 'location'])
-        ->name('show-location');
+        ->name('location');
     Route::get('phone-number', [RegisteredUserController::class, 'phone_number'])
         ->name('phone-number');
+        Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])
+        ->name('email-verification');
     Route::get('password', [RegisteredUserController::class, 'password'])
         ->name('password');
-
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login'); //from auth.php
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });

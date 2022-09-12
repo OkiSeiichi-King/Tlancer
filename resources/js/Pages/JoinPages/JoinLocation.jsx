@@ -14,7 +14,7 @@ const JoinLocation = (props) => {
     const [loc, setLoc] = useState();
     console.log("location: " + loc);
     const [locIsValid, setLocIsValid] = useState(false);
-    const signupCTX = useContext(SignupContext);
+
     return (
         <>
 
@@ -69,6 +69,8 @@ const JoinLocation = (props) => {
     `}</style>
 
             <>
+
+            <JoinNav to='date-of-birth' button='back'/>
 
                 <header className="container-fluid">
                     <nav className="container navbar navbar-expand-lg navbar-light bg-white fixed-top w-100 d-flex align-items-center justify-content-between p-2 pt-4">

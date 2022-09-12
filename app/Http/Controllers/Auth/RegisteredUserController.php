@@ -28,10 +28,18 @@ class RegisteredUserController extends Controller
     {
         return Inertia::render('JoinPages/JoinName');
     }
+    public function account()
+    {
+        return Inertia::render('JoinPages/ChooseAccount');
+    }
 
     public function birth()
     {
         return Inertia::render('JoinPages/JoinDateOfBirth');
+    }
+    public function email_verification()
+    {
+        return Inertia::render('JoinPages/VerifyEmail');
     }
 
     public function location()

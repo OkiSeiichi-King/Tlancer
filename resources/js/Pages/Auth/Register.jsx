@@ -16,8 +16,10 @@ export default function Register(props) {
 
                 <JoinNav to="welcome" button="close" />
 
-                <JoinEmail/>
-                {/* <ChooseAccount/>*/}
+                <JoinEmail />
+
+                {/* <JoinEmail/> */}
+                {/* <ChooseAccount /> */}
             </Tlancer>
         </>
     );
