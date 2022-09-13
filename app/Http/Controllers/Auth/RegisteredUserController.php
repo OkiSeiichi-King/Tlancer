@@ -88,8 +88,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // This will goto the Email Verification Setup
-        return redirect(RouteServiceProvider::HOME);
+        // This should goto the Email Verification Setup, based on the frontend design
+        return redirect('email-verification');
+        // return redirect(RouteServiceProvider::HOME);
 
     }
 }
