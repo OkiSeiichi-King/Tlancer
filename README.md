@@ -64,3 +64,7 @@ and then call function Trans where you need to, like:
     { trans('Home') }
 
 and if languege is set to **en** it will return "Home" and if **ka** will return "მთავარი" translated version
+
+
+# iamcares
+# Checking write access to git.
