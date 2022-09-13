@@ -24,7 +24,7 @@ const VerifyEmail = (props) => {
 
 
     `}</style>
-      <JoinNav to="welcome" button="close" />
+      <JoinNav to="email" button="back" />
       <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
         <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
           <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
@@ -53,7 +53,7 @@ const VerifyEmail = (props) => {
                 />
               </div>
               {verify.length === 6 ? (
-                <Link href={"account"}>
+                <Link href={""}>
                   <button
                     onClick={verifyHandler}
                     className="btn-registration btn btn-lg mt-5"
