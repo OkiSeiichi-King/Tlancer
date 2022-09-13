@@ -12,37 +12,14 @@ import padlock from "../../images/Registration/padlock.svg";
 
 const JoinEmail = (props) => {
 
-    console.log(props);
-    const {data, setData, post, processing, errors, reset} = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-    });
-
-    const [Page, setPage] = useState(0);
-
-    useEffect(() => {
-        return () => {
-            reset('password', 'password_confirmation');
-        };
-    }, []);
-
-    const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
-    };
-
- 
-
-    const [isLoading, setIsLoading] = useState(false);
-    const [isValid, setIsValid] = useState(true);
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [isValid, setIsValid] = useState(true);
 
     const [pass, setPass] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
-
-/*
-
     const [email, setEmail] = useState("");
+
+    /*
     const [tokenHasValue, setTokenHasValue] = useState(true);
 
     const [isValid, setIsValid] = useState(true);
@@ -61,16 +38,20 @@ const JoinEmail = (props) => {
         }
     }, [email]);
 
-    const submitHandler =  (e) => {
-        e.preventDefault();
+    */
 
-    };*/
+     const handleSubmit =  (event) => {
+        event.preventDefault();
+        // alert(`Your email:${email}: password is : ${pass} : confirm Pass: ${confirmPass}`)
+      
+
+     };
 
     return (
         <>
 
 
-<JoinNav to='join' button='back'/>
+   <JoinNav to='join' button='back'/>
      
             <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
                 <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
@@ -83,7 +64,7 @@ const JoinEmail = (props) => {
                         </h3>
 
 
-                        <form>
+                        <form onClick={handleSubmit}>
 
                             <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
                                 <img
@@ -99,11 +80,11 @@ const JoinEmail = (props) => {
                                 <Input
                                     type="text"
                                     name="email"
-                                    value={data.email}
+                                    value={email}
                                     className="d-block text-input"
                                     autoComplete="username"
                                     isFocused={true}
-                                    handleChange={onHandleChange}
+                                    handleChange={(e) => setEmail(e.target.value)}
                                     placeholder="Enter Email"
                                 />
 
@@ -119,6 +100,7 @@ const JoinEmail = (props) => {
                                 />
                                 <input
                                     id="login-password"
+                                    value={pass}
                                     onChange={(e) => {
                                         setPass(e.target.value);
                                     }}
@@ -138,7 +120,7 @@ const JoinEmail = (props) => {
                                 />
                                 <input
                                     id="login-confirm-password"
-                                    className="d-block text-input"
+                                    value={confirmPass}                                    className="d-block text-input"
                                     type={"password"}
                                     placeholder="Confirm password"
                                     onChange={(e) => {
@@ -175,10 +157,11 @@ const JoinEmail = (props) => {
                             ) : (
                                 <Link href='email-verification'>
                                     <button
-
+                                    
                                         className="btn-registration btn btn-lg mt-5"
                                     >
                                         Continue{" "}
+                                    
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"

@@ -6,13 +6,14 @@ import imgSignup from "../../images/Registration/img-signup-6.webp";
 import padlock from "../../images/Registration/padlock.svg";
 
 const VerifyEmail = (props) => {
-  console.log("verifyEmail rendered");
+  // console.log("verifyEmail rendered");
 
   
   const [verify, setVerify] = useState("");
 
   const verifyHandler = () => {
-    console.log('works')
+    // console.log('works')
+    console.log(verify);
   }
 
 

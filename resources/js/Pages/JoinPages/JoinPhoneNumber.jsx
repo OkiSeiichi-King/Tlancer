@@ -9,11 +9,11 @@ const JoinPhoneNumber = () => {
     const [phone, setPhone] = useState('');
 
 
-    // const finalSubmitHandler = (e) => {
-    //     e.preventDefault();
-    //     console.log("verify submit started");
+    const finalSubmitHandler = (e) => {
+        e.preventDefault();
+        console.log("verify submit started");
 
-    // };
+    };
     return (
         <>
 
@@ -85,7 +85,7 @@ const JoinPhoneNumber = () => {
                             ) : (
                                 <Link href='login'>
                                     <button
-
+                                    onClick={finalSubmitHandler}
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}

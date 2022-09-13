@@ -11,6 +11,7 @@ const JoinName = (props) => {
 
     const onClickHandler = () => {
         console.log('working')
+        console.log(`first Name is : ${fName}  Last Name is  : ${lName}`);
     }
 
     return (

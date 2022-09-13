@@ -12,6 +12,10 @@ const JoinName = (props) => {
     console.log("dob rendered");
     const [dateValue, setDateValue] = useState();
 
+    const dateSubmitHandler = () => {
+        console.log(dateValue);
+    }
+
     return (
 
         <>
@@ -48,9 +52,7 @@ const JoinName = (props) => {
 
                             <Link href='/location'>
                                 <button
-                                    onClick={() => {
-                                        // signupCTX.actions.dateHandler(dateValue);
-                                    }}
+                                    onClick={dateSubmitHandler}
                                     className="btn-registration btn btn-lg"
                                 >
                                     Continue{" "}

@@ -15,6 +15,11 @@ const JoinLocation = (props) => {
     console.log("location: " + loc);
     const [locIsValid, setLocIsValid] = useState(false);
 
+
+    const locationSubmitHandler = () => {
+        console.log(loc);
+    }
+
     return (
         <>
 
@@ -155,9 +160,7 @@ const JoinLocation = (props) => {
                             ) : (
                                 <Link href='/phone-number'>
                                     <button
-                                        onClick={() => {
-                                            signupCTX.actions.locationHandler(loc);
-                                        }}
+                                        onClick={locationSubmitHandler}
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}
