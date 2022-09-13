@@ -3,8 +3,8 @@ import { useState, useContext } from "react";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-7.webp";
 import padlock from "../../images/Registration/padlock.svg";
-import backBtn from "../../images/Registration/arrow-left.svg";
-import logo from "../../images/logo.webp";
+
+import JoinNav from './JoinNav';
 
 
 const JoinPassword = (props) => {
@@ -19,86 +19,7 @@ const JoinPassword = (props) => {
         <>
 
 
-            {/* Nav */}
-            <style>{`
-      .registration-back-btn {
-        font-family: 'Ubuntu', san-serif;
-        font-weight: 500;
-        text-decoration: none;
-        color: #00274c;
-        font-size: 1.5rem;
-      }
-      .registration-back-btn:hover {
-        color: #00274c;
-        opacity: 0.7;
-      }
-      #registration-back-btn {
-        width: 25px;
-        height: 25px;
-      }
-      #registration-close-btn {
-        width: 35px;
-        height: 35px;
-      }
-
-
-      .reg-logo{
-        width: 150px;
-        height: 35px;
-      }
-
-      @media (min-width: 768px) {
-
-      #registration-close-btn {
-        width: 50px;
-        height: 50px;
-      }
-      #registration-back-btn {
-        width: 50px;
-        height: 50px;
-      }
-      .reg-logo{
-        width: 187px;
-        height: 45px;
-      }
-
-      }
-
-
-    `}</style>
-
-            <>
-
-                <header className="container-fluid">
-                    <nav className="container navbar navbar-expand-lg navbar-light bg-white fixed-top w-100 d-flex align-items-center justify-content-between p-2 pt-4">
-
-
-
-                        <div className="registration-back-btn-container col">
-                            <Link href='phone-number' className="registration-back-btn" >
-                                <img
-                                    id="registration-back-btn"
-                                    src={backBtn}
-                                    alt="back button"
-                                    width={"70"}
-                                    height={"70"}
-                                />{" "}
-                                Back
-                            </Link>
-                        </div>
-                        <Link className="col d-flex">
-                            <img
-                                className="reg-logo ms-auto"
-                                src={logo}
-                                alt="Tlancer"
-                                width={"374"}
-                                height={"90"}
-                            />
-                        </Link>
-                    </nav>
-                </header>
-            </>
-            {/* End Nav */}
+<JoinNav to='phone-number' button="back"/>
 
 
             <style>{`

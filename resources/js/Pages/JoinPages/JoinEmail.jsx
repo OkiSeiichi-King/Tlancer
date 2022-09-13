@@ -4,42 +4,22 @@ import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-1.webp";
 import atSign from "../../images/Registration/at-sign.svg";
 import Input from "@/Components/Input";
+import JoinNav from './JoinNav';
+import padlock from "../../images/Registration/padlock.svg";
+
+
 
 
 const JoinEmail = (props) => {
 
-    console.log(props);
-    const {data, setData, post, processing, errors, reset} = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-    });
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [isValid, setIsValid] = useState(true);
 
-    const [Page, setPage] = useState(0);
-
-    useEffect(() => {
-        return () => {
-            reset('password', 'password_confirmation');
-        };
-    }, []);
-
-    const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
-    };
-
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route('register'));
-    };
-
-    const [isLoading, setIsLoading] = useState(false);
-    const [isValid, setIsValid] = useState(true);
-
-/*
-
+    const [pass, setPass] = useState("");
+    const [confirmPass, setConfirmPass] = useState("");
     const [email, setEmail] = useState("");
+
+    /*
     const [tokenHasValue, setTokenHasValue] = useState(true);
 
     const [isValid, setIsValid] = useState(true);
@@ -58,13 +38,21 @@ const JoinEmail = (props) => {
         }
     }, [email]);
 
-    const submitHandler =  (e) => {
-        e.preventDefault();
+    */
 
-    };*/
+     const handleSubmit =  (event) => {
+        event.preventDefault();
+        // alert(`Your email:${email}: password is : ${pass} : confirm Pass: ${confirmPass}`)
+      
+
+     };
 
     return (
         <>
+
+
+   <JoinNav to='join' button='back'/>
+     
             <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
                 <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
                     <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
@@ -72,11 +60,11 @@ const JoinEmail = (props) => {
 
 
                         <h3 className="h1 display-5 fw-bold account-form-label">
-                            Type in your email and password to continue
+                            Type in your email and password  to continue
                         </h3>
 
 
-                        <form>
+                        <form onClick={handleSubmit}>
 
                             <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
                                 <img
@@ -92,75 +80,65 @@ const JoinEmail = (props) => {
                                 <Input
                                     type="text"
                                     name="email"
-                                    value={data.email}
+                                    value={email}
                                     className="d-block text-input"
                                     autoComplete="username"
                                     isFocused={true}
-                                    handleChange={onHandleChange}
+                                    handleChange={(e) => setEmail(e.target.value)}
                                     placeholder="Enter Email"
                                 />
 
                             </div>
 
-                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
+                            <div className="w-75 my-3 mt-md-4 p-3 registration-name d-flex flex-row align-items-center registration-input me-5">
                                 <img
                                     className="me-3"
-                                    src={atSign}
+                                    src={padlock}
                                     alt="@"
                                     width="24"
                                     height="24"
                                 />
-                                <label className="d-none" htmlFor="login-email">
-                                    Enter email
-                                </label>
-
-                                <Input
-                                    type="password"
-                                    name="password"
-                                    value={data.password}
+                                <input
+                                    id="login-password"
+                                    value={pass}
+                                    onChange={(e) => {
+                                        setPass(e.target.value);
+                                    }}
                                     className="d-block text-input"
-                                    handleChange={onHandleChange}
-                                    placeholder="Enter Password"
+                                    type={"text"}
+                                    placeholder="Enter password"
                                 />
-
                             </div>
 
-                            <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
+                            <div className="w-75 my-3 mt-md-4 p-3 registration-name d-flex flex-row align-items-center registration-input me-5">
                                 <img
                                     className="me-3"
-                                    src={atSign}
-                                    alt="@"
+                                    src={padlock}
+                                    alt="padlock icon"
                                     width="24"
                                     height="24"
                                 />
-                                <label className="d-none" htmlFor="login-email">
-                                    Enter email
-                                </label>
-
-                                <Input
-                                    type="password"
-                                    name="password_confirmation"
-                                    value={data.password_confirmation}
-                                    className="d-block text-input"
-                                    required
-                                    placeholder="Confirm Password"
+                                <input
+                                    id="login-confirm-password"
+                                    value={confirmPass}                                    className="d-block text-input"
+                                    type={"password"}
+                                    placeholder="Confirm password"
+                                    onChange={(e) => {
+                                        setConfirmPass(e.target.value);
+                                    }}
                                 />
                             </div>
+                            <h5 className="password-subtitle">
+                                Password must include, Letters, numbers, and symbols
+                            </h5>
+
+
 
 
                             <br />
-                            {isLoading ? (
-                                <div className="d-flex align-items-center w-25 h5">
-                                    <strong className="visually-hidden">Loading...</strong>
-                                    <div
-                                        className="spinner-border mx-auto"
-                                        role="status"
-                                        aria-hidden="true"
-                                    ></div>
-                                </div>
-                            ) : !isValid ? (
-                                <button disabled className="btn-registration btn btn-lg">
-                                    <span>Continue </span>
+                            {pass !== confirmPass || pass.length < 1 ? (
+                                <button disabled className="btn-registration btn btn-lg mt-5">
+                                    Continue{" "}
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="16"
@@ -177,12 +155,13 @@ const JoinEmail = (props) => {
                                     </svg>
                                 </button>
                             ) : (
-                                <InertiaLink href='name'>
+                                <Link href='email-verification'>
                                     <button
-                                        // onClick={submitHandler}
-                                        className="btn-registration btn btn-lg"
+                                    
+                                        className="btn-registration btn btn-lg mt-5"
                                     >
                                         Continue{" "}
+                                    
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"
@@ -198,7 +177,7 @@ const JoinEmail = (props) => {
                                             />
                                         </svg>
                                     </button>
-                                </InertiaLink>
+                                </Link>
                             )}
                         </form>
                     </div>

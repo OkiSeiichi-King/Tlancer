@@ -1,19 +1,22 @@
 import { Link } from '@inertiajs/inertia-react';
-import { useContext, useState } from "react";
+import { useState } from "react";
 import JoinNav from "./JoinNav";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-6.webp";
 import padlock from "../../images/Registration/padlock.svg";
-import SignupContext from "../../store/signup-context";
-const VerifyEmail = (props) => {
-  console.log("verifyEmail rendered");
 
-  const signupCTX = useContext(SignupContext);
+const VerifyEmail = (props) => {
+  // console.log("verifyEmail rendered");
+
+  
   const [verify, setVerify] = useState("");
 
   const verifyHandler = () => {
-    signupCTX.actions.verifyCodeHandler(verify);
-  };
+    // console.log('works')
+    console.log(verify);
+  }
+
+
 
   return (
     <>
@@ -21,15 +24,13 @@ const VerifyEmail = (props) => {
 
 
     `}</style>
-      <JoinNav to="/" button="close" />
+      <JoinNav to="welcome" button="close" />
       <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
         <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
           <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
             <h2 className="account-heading mb-3">
-              A verification code was sent to your email{" "}
-              {signupCTX.data.email && (
-                <span className="email-accent">{signupCTX.data.email}</span>
-              )}
+              A verification code was sent to your email 
+           
             </h2>
             <h3 className="h1 display-5 fw-bold account-form-label">
               Enter Verification code
@@ -52,7 +53,7 @@ const VerifyEmail = (props) => {
                 />
               </div>
               {verify.length === 6 ? (
-                <Link to={"/account"}>
+                <Link href={"account"}>
                   <button
                     onClick={verifyHandler}
                     className="btn-registration btn btn-lg mt-5"
