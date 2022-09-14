@@ -102,3 +102,13 @@ Inertia::share('appName', config('app.name'));
  */
 
 Route::get('test-mail/{email}', [HomeController::class, 'testMail']);
+
+
+
+/**
+ * Requested Front-end Routes
+ */
+
+
+Route::get('tutor/my_courses', [TutorHomePageController::class, 'courses'])->name('tutor-courses');
+Route::get('tutor/new_course', [TutorHomePageController::class, 'create'])->name('tutor-new-course');
