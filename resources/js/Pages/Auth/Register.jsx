@@ -18,8 +18,6 @@ export default function Register(props) {
 
                 <JoinEmail />
 
-                {/* <JoinEmail/> */}
-                {/* <ChooseAccount /> */}
             </Tlancer>
         </>
     );
