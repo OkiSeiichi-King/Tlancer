@@ -81,7 +81,7 @@ const ChooseAccount = (props) => {
                             ) : (
                                 <Link href="name">
                                     <button
-                                 
+
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}
