@@ -158,11 +158,11 @@ const TutorNav = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to={"/tutor/courses"}
+                    href={route("tutor-courses")}
                     className="nav-link text-nowrap"
                     aria-current="page"
                   >
-                    {Trans("Courses")}
+                    {Trans("My Courses")}
                   </Link>
                 </li>
                 <li className="nav-item">
