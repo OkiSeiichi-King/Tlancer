@@ -37,11 +37,20 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('tutor-home', [TutorHomePageController::class, 'index'])->name('tutor-home');
 
-    Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])->name('email-verification');
-    Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
+
     Route::get('account', [RegisteredUserController::class, 'account'])->name('account');
 });
 
+/**
+ * Auth Middleware
+ */
+
+ Route::middleware('auth')->group(function (){
+    Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])->name('verification.notice');
+
+    Route::get('email/verify/{id}/{hash}', [RegisteredUserController::class, 'verifyWithLink'])->middleware('signed')->name('verification.verify');
+    Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
+ });
 
 
 Route::middleware('guest')->group(function () {

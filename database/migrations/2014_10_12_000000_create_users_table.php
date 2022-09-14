@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('email_verification_code')->nullable();
+            $table->integer('email_verification_code')->nullable(); // Will write a custom Registered event / VerifyMail Event: when the frontend works
             $table->rememberToken();
             $table->timestamps();
         });
