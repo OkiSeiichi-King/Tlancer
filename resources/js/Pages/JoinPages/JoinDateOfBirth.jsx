@@ -9,7 +9,7 @@ import logo from "../../images/logo.webp";
 
 
 const JoinName = (props) => {
-    console.log("dob rendered");
+    // console.log("dob rendered");
     const [dateValue, setDateValue] = useState();
 
     const dateSubmitHandler = () => {

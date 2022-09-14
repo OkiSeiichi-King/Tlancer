@@ -1,5 +1,4 @@
-import {Link, useForm} from '@inertiajs/inertia-react';
-import {useState} from "react";
+import {useForm} from '@inertiajs/inertia-react';
 import JoinNav from "./JoinNav";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-6.webp";
