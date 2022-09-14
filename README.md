@@ -3,6 +3,7 @@
 ***Please read information below before you start!***
 
 ### Requirements:
+## Please note the new "--seed" added to migration
 
 1) composer
 2) php 8.1+
@@ -18,7 +19,7 @@ Installation:
 - composer install
 - cp .env.example to .env
 - open .env file and add empty database from your mysql
-- php artisan migrate
+- php artisan migrate --seed
 - npm run dev
 - open second console, shell or bash and run command "php artisan serve"
 - after this you will be able to visit web page on http://127.0.0.1:8000

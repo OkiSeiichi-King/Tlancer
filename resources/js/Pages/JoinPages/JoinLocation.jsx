@@ -1,9 +1,8 @@
 import { Link } from '@inertiajs/inertia-react';
-import { useState, useContext } from "react";
+import { useState} from "react";
 import JoinNav from "./JoinNav";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-4.webp";
-import SignupContext from "../../store/signup-context";
 import backBtn from "../../images/Registration/arrow-left.svg";
 import logo from "../../images/logo.webp";
 

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\EmailVerifyPostRequest;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -32,16 +35,14 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        $request->validate([
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+
+        $validated = $request->validated();
 
         $user = User::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'email' =>$validated['email'],
+            'password' => Hash::make($validated['password']),
             'email_verification_code'=>mt_rand(100000, 999999),
         ]);
 
@@ -53,25 +54,34 @@ class RegisteredUserController extends Controller
 
         // This should goto the Email Verification Setup, based on the frontend design
 
-        return redirect('email-verification');
+        // return redirect('verification.notice');
+        return redirect('account');
     }
 
     public function email_verification()
     {
         if(Auth::user()->email_verified_at){ //TODO:this needs rework
-            return redirect('account');
+            return redirect(RouteServiceProvider::HOME);
         }
 
         return Inertia::render('JoinPages/VerifyEmail');
     }
 
-    public function verify(EmailVerifyPostRequest $request){
+    public function verify(Request $request){
+        $request->validate([
+            'email_verification_code' => 'required|string',
+        ]);
 
-        $request->validated();
+        $request->id = Auth::id();
+        $request->hash = $request->email_verification_code;
+        $request->fulfill();
 
-        Auth::user()->markEmailAsVerified();
+        return redirect(RouteServiceProvider::HOME);
+    }
 
-        return redirect('account');
+    public function verifyWithLink(EmailVerificationRequest $request){
+        $request->fulfill();
+        return redirect(RouteServiceProvider::HOME);
     }
 
     public function show_name()
