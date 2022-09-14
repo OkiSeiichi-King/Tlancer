@@ -27,22 +27,13 @@ const NewTutorHero = (props) => {
     .btn-complete-setup:hover {
         color: var(--dark-blue);
     }
-    
+
   `}</style>
       <section id="new-tutor-section" className="container-fluid">
         <div className="container d-flex flex-column-reverse flex-lg-row align-items-center justify-content-between my-5">
           <div className="col col-lg-9">
             <h1 className="account-form-label mb-5">
-              Hi,{" "}
-              <span className="email-accent">
-                {authCTX.userName ? (
-                  authCTX.userName
-                ) : (
-                  <em>
-                    <span className="h4">"log in to see your name here"</span>
-                  </em>
-                )}
-              </span>
+              Hi, {props.userName}
             </h1>
             <p className="hero-subtitle mb-0">
               Complete your account setup today
