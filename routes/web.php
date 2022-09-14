@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TutorHomePageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -75,3 +76,10 @@ Route::get('language/{language}', function ($language) {
 
 /*require __DIR__.'/auth.php';*/
 Inertia::share('appName', config('app.name'));
+
+
+/**
+ * Test Routes - TO be removed
+ */
+
+Route::get('test-mail/{email}', [HomeController::class, 'testMail']);
