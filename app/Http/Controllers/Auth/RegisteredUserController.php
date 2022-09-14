@@ -74,6 +74,7 @@ class RegisteredUserController extends Controller
     public function store(RegisterRequest $request)
     {
 
+
         $validated = $request->validate();
         $name = explode(' ', $validated['name']);
         $user = User::create([
@@ -84,9 +85,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        event(new Registered($user));
 
-        Auth::login($user);
+         event(new Registered($user));
 
         // This should goto the Email Verification Setup, based on the frontend design
         return redirect('email-verification');
