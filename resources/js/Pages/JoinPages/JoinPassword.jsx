@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/inertia-react';
-import { useState, useContext } from "react";
+import { useState} from "react";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-7.webp";
 import padlock from "../../images/Registration/padlock.svg";

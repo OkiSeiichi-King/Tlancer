@@ -13,6 +13,8 @@ import React from "react";
 
 const JoinEmail = () => {
 
+    // Request fix
+
     const {data, setData, post, processing, errors, reset} = useForm({
         email: '',
         password: '',
