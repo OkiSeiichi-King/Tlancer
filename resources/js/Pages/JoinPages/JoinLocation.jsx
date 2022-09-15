@@ -31,11 +31,11 @@ const JoinLocation = (props) => {
     }
 
     return (
-     
+
 
             <>
 
-            <JoinNav to='date-of-birth' button='back'/>
+            <JoinNav to='choose-dob' button='back'/>
 
             <style>{`
 
@@ -86,9 +86,9 @@ const JoinLocation = (props) => {
                                     </svg>
                                 </button>
                             ) : (
-     
+
                                     <button
-                                      
+
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}
@@ -107,7 +107,7 @@ const JoinLocation = (props) => {
                                             />
                                         </svg>
                                     </button>
-                              
+
                             )}
                         </form>
                     </div>

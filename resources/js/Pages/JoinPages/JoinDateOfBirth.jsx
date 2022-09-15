@@ -12,7 +12,7 @@ const JoinName = (props) => {
     // console.log("dob rendered");
     // const [dateValue, setDateValue] = useState();
     const {data, setData, post, processing, errors, reset} = useForm({
-        dateValue: '',
+        dob: '',
     });
 
     const HandleChange = (e) => {
@@ -24,14 +24,14 @@ const JoinName = (props) => {
 
     const dateSubmitHandler = (e) => {
         e.preventDefault()
-        // console.log(dateValue);
+        // console.log(dob);
         post(route('store-date'))
     }
 
     return (
 
         <>
-            <JoinNav to='name' button='back' />
+            <JoinNav to='choose-name' button='back' />
 
 
             <style>{`
@@ -45,10 +45,10 @@ const JoinName = (props) => {
 
     `}</style>
 
-            <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
-                <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
-                    <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
-                        <h2 className="account-heading mb-3">Age is just a number</h2>
+            <section className="mb-5 container-fluid registration fade-in d-flex flex-column p-md-5">
+                <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
+                    <div className="mb-5 text-center col col-md-7 me-md-5 text-md-start">
+                        <h2 className="mb-3 account-heading">Age is just a number</h2>
                         <h3 className="h1 display-5 fw-bold account-form-label">
                             Pick your birth date
                         </h3>
@@ -56,16 +56,15 @@ const JoinName = (props) => {
                         <form onSubmit={dateSubmitHandler} className="my-5">
                             <input
                                 id="join-date"
-                                name='dateValue'
+                                name='dob'
                                 onChange={HandleChange}
-                                value={data.dateValue}
+                                value={data.dob}
                                 type={"date"}
-                                className="registration-date h4 p-3 registration-input d-block mb-5"
+                                className="p-3 mb-5 registration-date h4 registration-input d-block"
                                 placeholder="DD"
                             />
 
                                 <button
-                        
                                     className="btn-registration btn btn-lg"
                                 >
                                     Continue{" "}
@@ -84,7 +83,7 @@ const JoinName = (props) => {
                                         />
                                     </svg>
                                 </button>
-                          
+
                         </form>
                     </div>
                     <div className="col col-md-5">

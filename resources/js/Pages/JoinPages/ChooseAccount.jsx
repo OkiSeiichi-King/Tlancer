@@ -11,7 +11,7 @@ const ChooseAccount = (props) => {
     console.log("choose account rendered");
 
     const {data, setData, post, processing, errors, reset} = useForm({
-        entry: '',
+        account_type: '',
     });
     const [isValid, setIsValid] = useState(false);
 
@@ -25,7 +25,7 @@ const ChooseAccount = (props) => {
 
     const submit = (e) => {
         e.preventDefault();
-        console.log(data.entry)
+        console.log(data.account_type)
         post(route('store-account'));
     }
 
@@ -39,11 +39,11 @@ const ChooseAccount = (props) => {
       }
 
     `}</style>
-    <JoinNav to='email-verification' button='back'/>
-            <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
+    <JoinNav to='verification.notice' button='back'/>
+            <section className="mb-5 container-fluid registration fade-in d-flex flex-column p-md-5">
                 <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
-                    <div className="col col-md-7 me-md-5 pe-md-5 text-center text-md-start mb-5">
-                        <h2 className="account-heading mb-3">
+                    <div className="mb-5 text-center col col-md-7 me-md-5 pe-md-5 text-md-start">
+                        <h2 className="mb-3 account-heading">
                             We are glad to have you onboard
                         </h2>
                         <h3 className="h1 display-5 fw-bold account-form-label">
@@ -52,10 +52,10 @@ const ChooseAccount = (props) => {
                         <form onSubmit={submit}>
                             <select
                                 onChange={HandleChange}
-                                name="entry"
+                                name="account_type"
                                 id="account-type"
                                 defaultValue={"DEFAULT"}
-                                className="form-select account-form my-5 p-3"
+                                className="p-3 my-5 form-select account-form"
                             >
                                 <option value="DEFAULT" disabled className="my-5">
                                     Select account type
@@ -111,7 +111,7 @@ const ChooseAccount = (props) => {
                                             />
                                         </svg>
                                     </button>
-                               
+
                             )}
                         </form>
                     </div>

@@ -68,42 +68,86 @@ class RegisteredUserController extends Controller
     }
 
     public function verify(Request $request){
-        $request->validate([
+        $validated = $request->validate([
             'email_verification_code' => 'required|string',
         ]);
 
-        $request->id = Auth::id();
-        $request->hash = $request->email_verification_code;
-        $request->fulfill();
+        if(!$validated['email_verification_code'] == Auth::user()->email_verification_code){
+            return back()->with('error', "Invalid Verification Code");
+        }
 
-        return redirect(RouteServiceProvider::HOME);
+        Auth::user()->markEmailAsVerified();
+        return redirect('choose-account');
     }
 
     public function verifyWithLink(EmailVerificationRequest $request){
         $request->fulfill();
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('choose-account');
     }
 
 
     public function store_account(Request $request)
     {
-        dd($request->all());
+
+        $user = Auth::user();
+
+        // TODO: Redirect to Name, if Role alreadt choosen.
+
+        $validated = $request->validate([
+            'account_type' => 'required|string',
+        ]);
+
+        // TODO: Proper validation needs to be done here.
+        if(!in_array($validated['account_type'], ['student', 'parent', 'tutor'])){
+            return back()->with('error', 'Invalid Account');
+        }
+
+        // $user->assignRole([$validated['account_type']]);
+        // to avoid assiging multiple roles if back button was used
+        $user->syncRoles([$validated['account_type']]);
+        return redirect('choose-name');
     }
+
     public function store_date(Request $request)
     {
-        dd($request->all());
+        $validated = $request->validate([
+            'dob' => 'required|date',
+        ]);
+
+        Auth::user()->update(['birth_date' => $validated['dob']]);
+        return redirect('choose-location');
     }
+
     public function store_name(Request $request)
     {
-        dd($request->all());
+        $validated = $request->validate([
+            'fName' => 'required|string',
+            'lName' => 'required|string',
+        ]);
+
+        // Auth::user()->update($validated); // Can't use this because of naming convension.
+        Auth::user()->update([
+            'first_name' => $validated['fName'],
+            'last_name' => $validated['lName'],
+        ]);
+        return redirect('choose-dob');
     }
     public function store_location(Request $request)
     {
-        dd($request->all());
+        $validated = $request->validate([
+            'location' => 'required',
+        ]);
+
+        return redirect('choose-phone');
     }
     public function store_number(Request $request)
     {
-        dd($request->all());
+        $validated = $request->validate([
+            'phone' => 'required|string',
+        ]);
+
+        Auth::user()->update($validated);
+        return $this->gotoHome();
     }
 
 
@@ -112,26 +156,41 @@ class RegisteredUserController extends Controller
 
     public function show_name()
     {
+        if(!empty(Auth::user()->phone)){
+            return $this->gotoHome();
+        }
         return Inertia::render('JoinPages/JoinName');
     }
 
     public function account()
     {
+        if(!empty(Auth::user()->phone)){
+            return $this->gotoHome();
+        }
         return Inertia::render('JoinPages/ChooseAccount');
     }
 
-    public function birth()
+    public function chooseDob()
     {
+        if(!empty(Auth::user()->phone)){
+            return $this->gotoHome();
+        }
         return Inertia::render('JoinPages/JoinDateOfBirth');
     }
 
     public function location()
     {
+        if(!empty(Auth::user()->phone)){
+            return $this->gotoHome();
+        }
         return Inertia::render('JoinPages/JoinLocation');
     }
 
     public function phone_number()
     {
+        if(!empty(Auth::user()->phone)){
+            return $this->gotoHome();
+        }
         return Inertia::render('JoinPages/JoinPhoneNumber');
     }
 

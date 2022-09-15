@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ParentHomePageController;
+use App\Http\Controllers\StudentHomePageController;
 use App\Http\Controllers\TutorHomePageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +38,23 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     })->name('dashboard');
 
     Route::get('tutor-home', [TutorHomePageController::class, 'index'])->name('tutor-home');
-    
-    Route::get('account', [RegisteredUserController::class, 'account'])->name('account');
+    Route::get('parent-home', [ParentHomePageController::class, 'index'])->name('parent-home');
+    Route::get('student-home', [StudentHomePageController::class, 'index'])->name('student-home');
 
+    Route::get('choose-account', [RegisteredUserController::class, 'account'])->name('choose-account');
+    Route::post('store-account', [RegisteredUserController::class, 'store_account'])->name('store-account');
+
+    Route::get('choose-name', [RegisteredUserController::class, 'show_name'])->name('choose-name');
+    Route::post('store-name', [RegisteredUserController::class, 'store_name'])->name('store-name');
+
+    Route::get('choose-dob', [RegisteredUserController::class, 'chooseDob'])->name('choose-dob');
+    Route::post('store-date', [RegisteredUserController::class, 'store_date'])->name('store-date');
+
+    Route::get('choose-location', [RegisteredUserController::class, 'location'])->name('choose-location');
+    Route::post('store-location', [RegisteredUserController::class, 'store_location'])->name('store-location');
+
+    Route::get('choose-phone', [RegisteredUserController::class, 'phone_number'])->name('choose-phone');
+    Route::post('store-number', [RegisteredUserController::class, 'store_number'])->name('store-number');
 });
 
 /**
@@ -50,35 +66,19 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('email/verify/{id}/{hash}', [RegisteredUserController::class, 'verifyWithLink'])->middleware('signed')->name('verification.verify');
     Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
+
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout'); // Don't need to be verified to logout.
  });
 
 
 Route::middleware('guest')->group(function () {
 
-
     Route::get('join', [RegisteredUserController::class, 'create'])->name('join');
-
     Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
-    Route::post('store-accoutn', [RegisteredUserController::class, 'store_account'])->name('store-account');
-    Route::post('store-date', [RegisteredUserController::class, 'store_date'])->name('store-date');
-    Route::post('store-name', [RegisteredUserController::class, 'store_name'])->name('store-name');
-    Route::post('store-location', [RegisteredUserController::class, 'store_location'])->name('store-location');
-    Route::post('store-number', [RegisteredUserController::class, 'store_number'])->name('store-number');
 
-
-
-    Route::get('account', [RegisteredUserController::class, 'account'])->name('account');
 
     Route::get('email', [RegisteredUserController::class, 'email'])
         ->name('email');
-    Route::get('name', [RegisteredUserController::class, 'show_name'])
-        ->name('name');
-    Route::get('date-of-birth', [RegisteredUserController::class, 'birth'])
-        ->name('date-of-birth');
-    Route::get('location', [RegisteredUserController::class, 'location'])
-        ->name('location');
-    Route::get('phone-number', [RegisteredUserController::class, 'phone_number'])
-        ->name('phone-number');
 
     Route::get('password', [RegisteredUserController::class, 'password'])
         ->name('password');
@@ -90,8 +90,7 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('logout');
+
 
 Route::get('language/{language}', function ($language) {
     Session()->put('locale', $language);

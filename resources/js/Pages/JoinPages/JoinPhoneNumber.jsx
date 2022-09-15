@@ -10,7 +10,7 @@ const JoinPhoneNumber = () => {
     // const [phone, setPhone] = useState('');
 
     const {data, setData, post, processing, errors, reset} = useForm({
-        number: '',
+        phone: '',
     });
 
     const HandleChnange = (e) => {
@@ -43,18 +43,18 @@ const JoinPhoneNumber = () => {
 
 
     `}</style>
-            <JoinNav to="location" button="back" />
-            <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
-                <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
-                    <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
-                        <h2 className="account-heading mb-3">
+            <JoinNav to="choose-location" button="back" />
+            <section className="mb-5 container-fluid registration fade-in d-flex flex-column p-md-5">
+                <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
+                    <div className="mb-5 text-center col col-md-7 me-md-5 text-md-start">
+                        <h2 className="mb-3 account-heading">
                             Use a valid phone number close by
                         </h2>
                         <h3 className="h1 display-5 fw-bold account-form-label">
                             Enter Phone Number
                         </h3>
                         <form onSubmit={submit}>
-                            <div className="w-75 my-5 p-3 registration-name d-flex flex-row align-items-center registration-input">
+                            <div className="flex-row p-3 my-5 w-75 registration-name d-flex align-items-center registration-input">
                                 <img
                                     className="me-3"
                                     src={phoneIcon}
@@ -64,15 +64,15 @@ const JoinPhoneNumber = () => {
                                 />
                                 <input
                                     id="registration-phone"
-                                    name='number'
-                                    value={data.number}
+                                    name='phone'
+                                    value={data.phone}
                                     onChange={HandleChnange}
                                     className="d-block"
                                     type={"number"}
                                     placeholder="Enter phone number"
                                 />
                             </div>
-                            {!data.number ? (
+                            {!data.phone ? (
                                 <button
                                     disabled
                                     className="btn-registration btn btn-lg"
@@ -94,9 +94,9 @@ const JoinPhoneNumber = () => {
                                     </svg>
                                 </button>
                             ) : (
-                              
+
                                     <button
-                           
+
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}
@@ -115,7 +115,7 @@ const JoinPhoneNumber = () => {
                                             />
                                         </svg>
                                     </button>
-                          
+
                             )
                             }
 
