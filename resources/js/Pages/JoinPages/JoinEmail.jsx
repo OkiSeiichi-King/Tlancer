@@ -1,4 +1,4 @@
-import {Link, useForm} from '@inertiajs/inertia-react';
+import {useForm} from '@inertiajs/inertia-react';
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-1.webp";
 import atSign from "../../images/Registration/at-sign.svg";

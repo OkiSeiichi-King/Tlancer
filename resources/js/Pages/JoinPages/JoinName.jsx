@@ -1,17 +1,31 @@
 import { Link } from '@inertiajs/inertia-react';
-import { useState, useContext } from "react";
+import { useState} from "react";
 import JoinNav from "./JoinNav";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-2.webp";
 import personIcon from "../../images/Registration/person-icon.svg";
+import { useForm } from '@inertiajs/inertia-react';
+
+
+
 const JoinName = (props) => {
+    const {data, setData, post, processing, errors, reset} = useForm({
+        fName: '',
+        lName:''
+    });
 
-    const [fName, setFName] = useState();
-    const [lName, setLName] = useState();
+    const HandleChange = (e) => {
+        setData(
+            e.target.name,
+            e.target.value
+        )
+    }
 
-    const onClickHandler = () => {
+    const HandleSubmit = (e) => {
+        e.preventDefault();
+        post(route('store-name'))
         console.log('working')
-        console.log(`first Name is : ${fName}  Last Name is  : ${lName}`);
+       
     }
 
     return (
@@ -29,7 +43,7 @@ const JoinName = (props) => {
                         <h3 className="h1 display-5 fw-bold account-form-label">
                             Type in names
                         </h3>
-                        <form className="my-5">
+                        <form onSubmit={HandleSubmit} className="my-5">
                             <div className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input">
                                 <img
                                     className="me-3"
@@ -40,9 +54,9 @@ const JoinName = (props) => {
                                 />
                                 <input
                                     id="registration-first-name"
-                                    onChange={(e) => {
-                                        setFName(e.target.value);
-                                    }}
+                                    onChange={HandleChange}
+                                    name="fName"
+                                    value={data.fName}
                                     className="d-block text-input"
                                     type={"text"}
                                     placeholder="First Name"
@@ -60,14 +74,14 @@ const JoinName = (props) => {
                                 <input
                                     id="registration-last-name"
                                     className="d-block text-input"
-                                    onChange={(e) => {
-                                        setLName(e.target.value);
-                                    }}
+                                    name='lName'
+                                    value={data.lName}
+                                    onChange={HandleChange}
                                     type={"text"}
                                     placeholder="Last Name"
                                 />
                             </div>
-                            {!(fName) || !(lName) ? (
+                            {!(data.fName) || !(data.lName) ? (
                                 <button disabled className="btn-registration btn btn-lg">
                                     Continue{" "}
                                     <svg
@@ -86,9 +100,9 @@ const JoinName = (props) => {
                                     </svg>
                                 </button>
                             ) : (
-                                <Link href='date-of-birth'>
+                          
                                     <button
-                                        onClick={onClickHandler}
+                                       
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}
@@ -107,7 +121,7 @@ const JoinName = (props) => {
                                             />
                                         </svg>
                                     </button>
-                                </Link>
+                               
                             )}
                         </form>
                     </div>

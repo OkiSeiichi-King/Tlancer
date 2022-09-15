@@ -2,19 +2,32 @@ import { useState, useContext } from "react";
 import { Link } from '@inertiajs/inertia-react';
 import JoinRightWrapper from "../JoinPages/JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup.webp";
-import logo from "../../images/logo.webp";
 import JoinNav from "./JoinNav";
-import closeBtn from "../../images/Registration/blueX.svg";
-// import backBtn from "../../images/Registration/arrow-left.svg";
+import { useForm } from "@inertiajs/inertia-react";
+
 
 
 const ChooseAccount = (props) => {
     console.log("choose account rendered");
 
-    const [entry, setEntry] = useState("");
+    const {data, setData, post, processing, errors, reset} = useForm({
+        entry: '',
+    });
     const [isValid, setIsValid] = useState(false);
-    console.log("entry: " + entry);
-    console.log("isValid: " + isValid);
+
+    const HandleChange = (e) => {
+        setData(
+            e.target.name,
+            e.target.value
+        )
+        setIsValid(true)
+    }
+
+    const submit = (e) => {
+        e.preventDefault();
+        console.log(data.entry)
+        post(route('store-account'));
+    }
 
     return (
         <>
@@ -36,12 +49,10 @@ const ChooseAccount = (props) => {
                         <h3 className="h1 display-5 fw-bold account-form-label">
                             Choose account type
                         </h3>
-                        <form>
+                        <form onSubmit={submit}>
                             <select
-                                onChange={(e) => {
-                                    setEntry(e.target.value);
-                                    setIsValid(true);
-                                }}
+                                onChange={HandleChange}
+                                name="entry"
                                 id="account-type"
                                 defaultValue={"DEFAULT"}
                                 className="form-select account-form my-5 p-3"
@@ -79,7 +90,7 @@ const ChooseAccount = (props) => {
                                     </svg>
                                 </button>
                             ) : (
-                                <Link href="name">
+
                                     <button
 
                                         className="btn-registration btn btn-lg"
@@ -100,7 +111,7 @@ const ChooseAccount = (props) => {
                                             />
                                         </svg>
                                     </button>
-                                </Link>
+                               
                             )}
                         </form>
                     </div>
