@@ -1,4 +1,10 @@
 import tutorCourseGlance from '../images/tutorCourseGlance.png'
+import student1 from '../images/student1.png'
+import student2 from '../images/student2.png'
+import student3 from '../images/student3.png'
+import student4 from '../images/student4.png'
+import student5 from '../images/student5.png'
+import tutor1 from '../images/tutor1.png'
 import {Link} from "@inertiajs/inertia-react";
 
 const TutorCourseGlance = () => {
@@ -68,7 +74,99 @@ const TutorCourseGlance = () => {
                 }
 
                 .course-glance-rating{
+                    margin-top: 15px;
+                }
 
+                .course-glance-rating-score {
+                    width: 30px;
+                    height: 23px;
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 23px;
+                    display: flex;
+                    align-items: center;
+                    color: #9CA3AF;
+                }
+
+                .course-glance-skills-card{
+                    display: flex;
+                    justify-content: center;
+                    background: #F6FBE7;
+                    border-radius: 8px;
+                    text-align: center;
+                    width: 115px;
+                }
+
+                .course-glance-skills-text{
+                    font-family: 'Ubuntu';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 20px;
+                    letter-spacing: -0.01em;
+                    color: #00274C;
+                }
+
+                .course-glance-student-image{
+                    border: 2px solid #FFFFFF;
+                    border-radius: 50px;
+                    background: #FFFFFF;
+                }
+
+                .course-glance-student-quantity{
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #9CA3AF;
+                    height: 19px;
+                }
+
+                .course-glance-tutor-container{
+                    padding: 2px 0px 20px;
+                    border-bottom: 1px solid #F3F4F6;
+                }
+
+                .course-glance-tutor-image{
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50px;
+                }
+
+                .course-glance-tutor-title{
+                    width: 42px;
+                    height: 19px;
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #6C757D;
+                }
+
+                .course-glance-tutor-full-name {
+                    width: 165px;
+                    height: 28px;
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 28px;
+                    color: #00274C;
+                }
+
+                .course-glance-tutor-view-profile {
+                    width: 106px;
+                    height: 21px;
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #0EBE6A;
                 }
             `}</style>
             <section className='container my-md-3'>
@@ -120,23 +218,66 @@ const TutorCourseGlance = () => {
                         <div className='d-flex align-items-center course-glance-rating'>
                             <div className='d-flex justify-between'>
                                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" fill="#FFCB05" stroke="#FFCB05" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" stroke="#9CA3AF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10 2.67578L7.1875 7.67578L2.1875 8.30078L5.9375 12.6758L4.6875 18.3008L10 15.8008L15.3125 18.3008L14.0625 12.6758L17.8125 8.30078L12.8125 7.67578L10 2.67578Z" stroke="#9CA3AF" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
 
                             </div>
-                            <p className=''>4.5</p>
+                            <p className='course-glance-rating-score m-2'>4.5</p>
+                        </div>
+
+                        <div className='d-flex align-items-center justify-content-between my-lg-5 pb-3' style={{ borderBottom: '1px solid #F3F4F6'}}>
+                            <div className='course-glance-skills-card'>
+                                <p className='course-glance-skills-text m-2'>UX Design</p>
+                            </div>
+
+                            <div className='course-glance-skills-card'>
+                                <p className='course-glance-skills-text m-2'>UX Research</p>
+                            </div>
+
+                            <div className='course-glance-skills-card'>
+                                <p className='course-glance-skills-text m-2'>Design</p>
+                            </div>
+
+                            <div className='course-glance-skills-card'>
+                                <p className='course-glance-skills-text m-2'>Research</p>
+                            </div>
+
+                        </div>
+
+                        <div class='d-flex align-items-center justify-content-between course-glance-tutor-container mb-3'>
+                            <div className='d-flex align-items-center'>
+                                <img alt='tutor-image' src={tutor1} className='course-glance-tutor-image'/>
+                                <div className='d-flex flex-column mb-2' style={{ marginLeft: '15px'}}>
+                                    <p className='mb-1 course-glance-tutor-title'>Tutor</p>
+                                    <p className='mb-1 course-glance-tutor-full-name'>Nicole Savana</p>
+                                </div>
+                            </div>
+
+                            <p className='mb-0 course-glance-tutor-view-profile'>View profile</p>
+                        </div>
+
+                        <div className='course-glance-students-card d-flex justify-content-start align-items-center'>
+                            <div className='d-flex justify-content-center align-items-center'>
+                                <img width='38' height='38' alt='student1-logo' src={student1} className='course-glance-student-image' />
+                                <img width='38' height='38' alt='student1-logo' src={student2} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
+                                <img width='38' height='38' alt='student1-logo' src={student3} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
+                                <img width='38' height='38' alt='student1-logo' src={student4} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
+                                <img width='38' height='38' alt='student1-logo' src={student5} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
+                                <p className='m-2 course-glance-student-quantity'>+ 368</p>
+                            </div>
+
                         </div>
 
                     </div>
