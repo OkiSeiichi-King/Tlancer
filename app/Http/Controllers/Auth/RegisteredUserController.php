@@ -50,12 +50,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        //TODO: create email sending job queue
-
         // This should goto the Email Verification Setup, based on the frontend design
 
         // return redirect('verification.notice');
-        return redirect('account');
+        return redirect('choose-account');
     }
 
     public function email_verification()
