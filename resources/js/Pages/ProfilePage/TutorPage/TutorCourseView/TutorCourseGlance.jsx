@@ -168,11 +168,53 @@ const TutorCourseGlance = () => {
                     line-height: 21px;
                     color: #0EBE6A;
                 }
+
+
+                @media (max-width: 750x) {
+                 .tutor-course-glance-image {
+                    width: 450px;
+                    height: 300px;
+                    align-self: center;
+                 }
+
+                 .create-assessment-button{
+                    align-self: center;
+                 }
+                }
+
+                @media (max-width: 700px) {
+                 .tutor-course-glance-image {
+                    width: 500px;
+                    height: 300px;
+                    align-self: center;
+                 }
+
+                 .create-assessment-button{
+                    align-self: center;
+                 }
+                }
+
+
+                @media (max-width: 512px) {
+                 .tutor-course-glance-image {
+                    width: 400px;
+                    height: 200px;
+                    align-self: center;
+                 }
+                }
+
+                @media (max-width: 400px) {
+                 .tutor-course-glance-image {
+                    width: 250px;
+                    height: 150px;
+                    align-self: center;
+                 }
+                }
             `}</style>
             <section className='container my-md-3'>
                 <div className='row justify-content-between'>
                     <div className='col d-flex flex-column align-items-start'>
-                        <img width='600' height='300' src={tutorCourseGlance} alt='tutor-course-glance-image'/>
+                        <img width='600' height='300' src={tutorCourseGlance} alt='tutor-course-glance-image' className='tutor-course-glance-image'/>
                         <Link
                             to={"/tutor/create-assessment"}
                             className="btn create-assessment-button btn-lg mt-5 fw-bold h5"
