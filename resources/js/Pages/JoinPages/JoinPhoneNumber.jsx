@@ -4,13 +4,24 @@ import JoinNav from "./JoinNav";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-5.webp";
 import phoneIcon from "../../images/Registration/charm_phone.svg";
+import { useForm } from '@inertiajs/inertia-react';
 
 const JoinPhoneNumber = () => {
-    const [phone, setPhone] = useState('');
+    // const [phone, setPhone] = useState('');
 
+    const {data, setData, post, processing, errors, reset} = useForm({
+        number: '',
+    });
 
-    const finalSubmitHandler = (e) => {
+    const HandleChnange = (e) => {
+        setData(
+            e.target.name,
+            e.target.value
+        )
+    }
+    const submit = (e) => {
         e.preventDefault();
+        post(route('store-number'))
         console.log("verify submit started");
 
     };
@@ -42,7 +53,7 @@ const JoinPhoneNumber = () => {
                         <h3 className="h1 display-5 fw-bold account-form-label">
                             Enter Phone Number
                         </h3>
-                        <form>
+                        <form onSubmit={submit}>
                             <div className="w-75 my-5 p-3 registration-name d-flex flex-row align-items-center registration-input">
                                 <img
                                     className="me-3"
@@ -53,15 +64,15 @@ const JoinPhoneNumber = () => {
                                 />
                                 <input
                                     id="registration-phone"
-                                    onChange={(e) => {
-                                        setPhone(e.target.value)
-                                    }}
+                                    name='number'
+                                    value={data.number}
+                                    onChange={HandleChnange}
                                     className="d-block"
                                     type={"number"}
                                     placeholder="Enter phone number"
                                 />
                             </div>
-                            {!phone ? (
+                            {!data.number ? (
                                 <button
                                     disabled
                                     className="btn-registration btn btn-lg"
@@ -83,9 +94,9 @@ const JoinPhoneNumber = () => {
                                     </svg>
                                 </button>
                             ) : (
-                                <Link href='login'>
+                              
                                     <button
-                                    onClick={finalSubmitHandler}
+                           
                                         className="btn-registration btn btn-lg"
                                     >
                                         Continue{" "}
@@ -104,7 +115,7 @@ const JoinPhoneNumber = () => {
                                             />
                                         </svg>
                                     </button>
-                                </Link>
+                          
                             )
                             }
 
