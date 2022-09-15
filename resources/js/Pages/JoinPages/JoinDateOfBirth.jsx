@@ -3,17 +3,29 @@ import { useState, useContext } from "react";
 import JoinNav from "./JoinNav";
 import JoinRightWrapper from "./JoinRightWrapper";
 import imgSignup from "../../images/Registration/img-signup-3.webp";
-import backBtn from "../../images/Registration/arrow-left.svg";
-import logo from "../../images/logo.webp";
+import { useForm } from '@inertiajs/inertia-react';
+
 
 
 
 const JoinName = (props) => {
     // console.log("dob rendered");
-    const [dateValue, setDateValue] = useState();
+    // const [dateValue, setDateValue] = useState();
+    const {data, setData, post, processing, errors, reset} = useForm({
+        dateValue: '',
+    });
 
-    const dateSubmitHandler = () => {
-        console.log(dateValue);
+    const HandleChange = (e) => {
+        setData(
+            e.target.name,
+            e.target.value
+        )
+    }
+
+    const dateSubmitHandler = (e) => {
+        e.preventDefault()
+        // console.log(dateValue);
+        post(route('store-date'))
     }
 
     return (
@@ -41,18 +53,19 @@ const JoinName = (props) => {
                             Pick your birth date
                         </h3>
 
-                        <form className="my-5">
+                        <form onSubmit={dateSubmitHandler} className="my-5">
                             <input
                                 id="join-date"
-                                onChange={(e) => setDateValue(e.target.value)}
+                                name='dateValue'
+                                onChange={HandleChange}
+                                value={data.dateValue}
                                 type={"date"}
                                 className="registration-date h4 p-3 registration-input d-block mb-5"
                                 placeholder="DD"
                             />
 
-                            <Link href='/location'>
                                 <button
-                                    onClick={dateSubmitHandler}
+                        
                                     className="btn-registration btn btn-lg"
                                 >
                                     Continue{" "}
@@ -71,7 +84,7 @@ const JoinName = (props) => {
                                         />
                                     </svg>
                                 </button>
-                            </Link>
+                          
                         </form>
                     </div>
                     <div className="col col-md-5">
