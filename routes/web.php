@@ -36,11 +36,21 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     })->name('dashboard');
 
     Route::get('tutor-home', [TutorHomePageController::class, 'index'])->name('tutor-home');
+    
+    Route::get('account', [RegisteredUserController::class, 'account'])->name('account');
 
-    Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])->name('email-verification');
-    Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
 });
 
+/**
+ * Auth Middleware
+ */
+
+ Route::middleware('auth')->group(function (){
+    Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])->name('verification.notice');
+
+    Route::get('email/verify/{id}/{hash}', [RegisteredUserController::class, 'verifyWithLink'])->middleware('signed')->name('verification.verify');
+    Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
+ });
 
 
 Route::middleware('guest')->group(function () {
@@ -98,3 +108,13 @@ Inertia::share('appName', config('app.name'));
  */
 
 Route::get('test-mail/{email}', [HomeController::class, 'testMail']);
+
+
+
+/**
+ * Requested Front-end Routes
+ */
+
+
+Route::get('tutor/my_courses', [TutorHomePageController::class, 'courses'])->name('tutor-courses');
+Route::get('tutor/new_course', [TutorHomePageController::class, 'create'])->name('tutor-new-course');
