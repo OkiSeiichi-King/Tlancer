@@ -1,22 +1,27 @@
 import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head } from "@inertiajs/inertia-react";
+import FooterLinks from "@/Pages/HomePage/FooterLinks";
+import Divider from "@/Pages/HomePage/Divider";
+import TutorCourseAssessment from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorCourseAssessment";
+import TutorNav from "@/Pages/Components/TutorNav";
+import TutorCourseGlance from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorCourseGlance";
 
 export default function MyCourse(props) {
     return (
         <Authenticated
             auth={props.auth}
             errors={props.errors}
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    my-courses
-                </h2>
-            }
         >
-
-            <div className="py-12">
-                aaaa
-            </div>
+            <TutorNav />
+            <Divider />
+            <TutorCourseGlance />
+            <Divider />
+            <TutorCourseAssessment />
+            <Divider />
+            <FooterLinks />
         </Authenticated>
     );
 }
+
+
