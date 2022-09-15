@@ -74,6 +74,32 @@ class RegisteredUserController extends Controller
         return redirect('account');
     }
 
+
+    public function store_account(Request $request)
+    {
+        dd($request->all());
+    }
+    public function store_date(Request $request)
+    {
+        dd($request->all());
+    }
+    public function store_name(Request $request)
+    {
+        dd($request->all());
+    }
+    public function store_location(Request $request)
+    {
+        dd($request->all());
+    }
+    public function store_number(Request $request)
+    {
+        dd($request->all());
+    }
+
+
+
+
+
     public function show_name()
     {
         return Inertia::render('JoinPages/JoinName');

@@ -39,7 +39,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])->name('email-verification');
     Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
-    Route::get('account', [RegisteredUserController::class, 'account'])->name('account');
 });
 
 
@@ -50,9 +49,15 @@ Route::middleware('guest')->group(function () {
     Route::get('join', [RegisteredUserController::class, 'create'])->name('join');
 
     Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
+    Route::post('store-accoutn', [RegisteredUserController::class, 'store_account'])->name('store-account');
+    Route::post('store-date', [RegisteredUserController::class, 'store_date'])->name('store-date');
+    Route::post('store-name', [RegisteredUserController::class, 'store_name'])->name('store-name');
+    Route::post('store-location', [RegisteredUserController::class, 'store_location'])->name('store-location');
+    Route::post('store-number', [RegisteredUserController::class, 'store_number'])->name('store-number');
 
 
 
+    Route::get('account', [RegisteredUserController::class, 'account'])->name('account');
 
     Route::get('email', [RegisteredUserController::class, 'email'])
         ->name('email');
