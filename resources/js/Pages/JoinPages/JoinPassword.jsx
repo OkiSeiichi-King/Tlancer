@@ -18,7 +18,7 @@ const JoinPassword = (props) => {
         <>
 
 
-<JoinNav to='phone-number' button="back"/>
+<JoinNav to='choose-phone' button="back"/>
 
 
             <style>{`
@@ -49,17 +49,17 @@ const JoinPassword = (props) => {
     `}</style>
 
 
-            <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
-                <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
-                    <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
-                        <h2 className="account-heading mb-3">
+            <section className="mb-5 container-fluid registration fade-in d-flex flex-column p-md-5">
+                <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
+                    <div className="mb-5 text-center col col-md-7 me-md-5 text-md-start">
+                        <h2 className="mb-3 account-heading">
                             Passwords are personal, keep you safe online too
                         </h2>
                         <h3 className="h1 display-5 fw-bold account-form-label">
                             Set a password
                         </h3>
                         <form>
-                            <div className="w-75 my-3 mt-md-4 p-3 registration-name d-flex flex-row align-items-center registration-input me-5">
+                            <div className="flex-row p-3 my-3 w-75 mt-md-4 registration-name d-flex align-items-center registration-input me-5">
                                 <img
                                     className="me-3"
                                     src={padlock}
@@ -78,7 +78,7 @@ const JoinPassword = (props) => {
                                 />
                             </div>
 
-                            <div className="w-75 my-3 mt-md-4 p-3 registration-name d-flex flex-row align-items-center registration-input me-5">
+                            <div className="flex-row p-3 my-3 w-75 mt-md-4 registration-name d-flex align-items-center registration-input me-5">
                                 <img
                                     className="me-3"
                                     src={padlock}
@@ -101,7 +101,7 @@ const JoinPassword = (props) => {
                             </h5>
 
                             {pass !== confirmPass || pass.length < 1 ? (
-                                <button disabled className="btn-registration btn btn-lg mt-5">
+                                <button disabled className="mt-5 btn-registration btn btn-lg">
                                     Continue{" "}
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +122,7 @@ const JoinPassword = (props) => {
                                 <Link href='register'>
                                     <button
 
-                                        className="btn-registration btn btn-lg mt-5"
+                                        className="mt-5 btn-registration btn btn-lg"
                                     >
                                         Continue{" "}
                                         <svg

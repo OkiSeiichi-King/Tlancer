@@ -46,8 +46,8 @@ class AuthenticatedSessionController extends Controller
         //TODO: must create logics to redirect student, tutor and parent in their pages
         //return redirect()->intended(RouteServiceProvider::HOME);
 
-        return redirect()->intended(RouteServiceProvider::TutorHome);
-
+        // return redirect()->intended(RouteServiceProvider::TutorHome);
+        return $this->gotoHome();
     }
 
     /**
