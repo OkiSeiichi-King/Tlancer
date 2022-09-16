@@ -6,6 +6,7 @@ import Divider from "@/Pages/HomePage/Divider";
 import TutorCourseAssessment from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorCourseAssessment";
 import TutorNav from "@/Pages/Components/TutorNav";
 import TutorCourseGlance from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorCourseGlance";
+import TutorDescription from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorDescription";
 
 export default function MyCourse(props) {
     return (
@@ -18,6 +19,8 @@ export default function MyCourse(props) {
             <TutorCourseGlance />
             <Divider />
             <TutorCourseAssessment />
+            <Divider />
+            <TutorDescription />
             <Divider />
             <FooterLinks />
         </Authenticated>
