@@ -20,7 +20,7 @@ const TutorBreadCrumbs = () => {
                     color: #0EBE6A;
                   }
             `}</style>
-            <div class='container mt-2'>
+            <div className='container mt-2'>
                 <div className='row'>
                     <div className='col-xl-12 d-flex align-items-center align-items-start'>
                         <h6 className='px-2 m-2 tutor-prev-bread-crumb'>Home</h6>

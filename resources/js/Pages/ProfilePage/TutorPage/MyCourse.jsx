@@ -8,6 +8,7 @@ import TutorCourseGlance from "@/Pages/ProfilePage/TutorPage/TutorCourseView/Tut
 import TutorDescription from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorDescription";
 import TutorAnnouncements from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorAnnouncements";
 import TutorBreadCrumbs from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorBreadCrumbs";
+import TutorNav from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorNav";
 
 export default function MyCourse(props) {
     return (
@@ -15,6 +16,7 @@ export default function MyCourse(props) {
             auth={props.auth}
             errors={props.errors}
         >
+            <TutorNav />
             <Divider />
             <TutorAnnouncements />
             <TutorBreadCrumbs />
