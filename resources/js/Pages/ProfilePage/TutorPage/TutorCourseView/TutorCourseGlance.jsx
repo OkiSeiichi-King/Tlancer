@@ -327,10 +327,10 @@ const TutorCourseGlance = () => {
                     <div className='col d-flex flex-column'>
                         <h1 className='course-glance-title'>Professional Product Design Certificate Course</h1>
 
-                        <div className='d-flex justify-content-start course-glance-price my-3'>
-                            <p className='course-glance-price course-glance-current-price'>$15.99</p>
-                            <p className='course-glance-price course-glance-previous-price'>$25.99</p>
-                        </div>
+                        {/*<div className='d-flex justify-content-start course-glance-price my-3'>*/}
+                        {/*    <p className='course-glance-price course-glance-current-price'>$15.99</p>*/}
+                        {/*    <p className='course-glance-price course-glance-previous-price'>$25.99</p>*/}
+                        {/*</div>*/}
 
                         <div>
                             <p className='course-glance-duration-title'>Course Duration</p>
@@ -406,19 +406,19 @@ const TutorCourseGlance = () => {
 
                         {/*    <p className='mb-0 course-glance-tutor-view-profile'>View profile</p>*/}
                         {/*</div>*/}
-                        {/*//todo this div must be moved in student course view page*/}
+                        {/*//todo: this div must be moved in student course view page*/}
 
-                        <div className='course-glance-students-card d-flex justify-content-start align-items-center'>
-                            <div className='d-flex justify-content-center align-items-center'>
-                                <img width='38' height='38' alt='student1-logo' src={student1} className='course-glance-student-image' />
-                                <img width='38' height='38' alt='student1-logo' src={student2} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
-                                <img width='38' height='38' alt='student1-logo' src={student3} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
-                                <img width='38' height='38' alt='student1-logo' src={student4} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
-                                <img width='38' height='38' alt='student1-logo' src={student5} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />
-                                <p className='m-2 course-glance-student-quantity'>+ 368</p>
-                            </div>
+                        {/*<div className='course-glance-students-card d-flex justify-content-start align-items-center'>*/}
+                        {/*    <div className='d-flex justify-content-center align-items-center'>*/}
+                        {/*        <img width='38' height='38' alt='student1-logo' src={student1} className='course-glance-student-image' />*/}
+                        {/*        <img width='38' height='38' alt='student1-logo' src={student2} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />*/}
+                        {/*        <img width='38' height='38' alt='student1-logo' src={student3} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />*/}
+                        {/*        <img width='38' height='38' alt='student1-logo' src={student4} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />*/}
+                        {/*        <img width='38' height='38' alt='student1-logo' src={student5} className='course-glance-student-image' style={{ marginLeft: '-12px'}} />*/}
+                        {/*        <p className='m-2 course-glance-student-quantity'>+ 368</p>*/}
+                        {/*    </div>*/}
 
-                        </div>
+                        {/*</div>*/}
 
                     </div>
                 </div>

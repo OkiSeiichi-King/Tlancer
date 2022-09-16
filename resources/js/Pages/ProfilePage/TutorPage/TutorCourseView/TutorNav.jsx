@@ -22,7 +22,7 @@ const TutorNav = () => {
             <button
                 className="nav-link dropdown-toggle border-0"
                 type="button"
-                ref="#"
+                href="#"
                 id="navbardrop"
                 data-bs-toggle="dropdown"
             >
