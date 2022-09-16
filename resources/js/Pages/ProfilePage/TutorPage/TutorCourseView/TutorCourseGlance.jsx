@@ -4,7 +4,7 @@ import student2 from '../images/student2.png'
 import student3 from '../images/student3.png'
 import student4 from '../images/student4.png'
 import student5 from '../images/student5.png'
-import tutor1 from '../images/tutor1.png'
+// import tutor1 from '../images/tutor1.png'
 import {Link} from "@inertiajs/inertia-react";
 
 const TutorCourseGlance = () => {
@@ -169,6 +169,45 @@ const TutorCourseGlance = () => {
                     color: #0EBE6A;
                 }
 
+                .course-preview-video-card{
+                    padding: 20px 31px;
+                    gap: 30px;
+                    height: 138px;
+                    background: #FFFFFF;
+                    box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.03);
+                    border-radius: 20px;
+                }
+
+                .course-preview-video-card-title{
+                    width: 178px;
+                    height: 28px;
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 28px;
+                    display: flex;
+                    align-items: center;
+                    color: #6C757D;
+                }
+
+                .course-preview-video-card-calendar-text {
+                    width: 107px;
+                    height: 28px;
+                    font-family: 'Work Sans';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 28px;
+                    display: flex;
+                    align-items: center;
+                    font-feature-settings: 'salt' on, 'liga' off;
+                    color: #0EBE6A;
+                }
+
+                .course-preview-video-card-container{
+                    width: 500px;
+                }
 
                 @media (max-width: 750x) {
                  .tutor-course-glance-image {
@@ -189,6 +228,14 @@ const TutorCourseGlance = () => {
                     align-self: center;
                  }
 
+                 .course-preview-video-card{
+                    width: 500px;
+                 }
+
+                 .course-preview-video-card-container{
+                    width: 450px;
+                 }
+
                  .create-assessment-button{
                     align-self: center;
                  }
@@ -200,6 +247,14 @@ const TutorCourseGlance = () => {
                     width: 400px;
                     height: 200px;
                     align-self: center;
+                 }
+
+                 .course-preview-video-card{
+                    width: 400px;
+                 }
+
+                 .course-preview-video-card-container{
+                    width: 350px;
                  }
                 }
 
@@ -213,18 +268,60 @@ const TutorCourseGlance = () => {
             `}</style>
             <section className='container my-md-3'>
                 <div className='row justify-content-between'>
-                    <div className='col d-flex flex-column align-items-start'>
-                        <img width='600' height='300' src={tutorCourseGlance} alt='tutor-course-glance-image' className='tutor-course-glance-image'/>
+                    <div className='col-lg-6 d-flex flex-column align-items-start'>
+                        <img width='550' height='300' src={tutorCourseGlance} alt='tutor-course-glance-image' className='tutor-course-glance-image'/>
+
+                        {/*<Link*/}
+                        {/*    to={"/tutor/create-assessment"}*/}
+                        {/*    className="btn create-assessment-button btn-lg mt-5 fw-bold h5"*/}
+                        {/*>*/}
+                        {/*    Enroll for this course*/}
+                        {/*    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
+                        {/*        <path d="M6.5 11.5C5.94772 11.5 5.5 11.9477 5.5 12.5C5.5 13.0523 5.94772 13.5 6.5 13.5L6.5 11.5ZM22.2071 13.2071C22.5976 12.8166 22.5976 12.1834 22.2071 11.7929L15.8431 5.42893C15.4526 5.03841 14.8195 5.03841 14.4289 5.42893C14.0384 5.81946 14.0384 6.45262 14.4289 6.84315L20.0858 12.5L14.4289 18.1569C14.0384 18.5474 14.0384 19.1805 14.4289 19.5711C14.8195 19.9616 15.4526 19.9616 15.8431 19.5711L22.2071 13.2071ZM6.5 13.5L21.5 13.5L21.5 11.5L6.5 11.5L6.5 13.5Z" fill="white"/>*/}
+                        {/*    </svg>*/}
+
+                        {/*</Link>*/}
+                        {/*todo this list must be moved in student course view page*/}
+
+                        <div className='course-preview-video-card d-flex flex-column align-items-start justify-content-center mt-3'>
+                            <p className='m-2 course-preview-video-card-title'>Your next class</p>
+                            <div className='d-flex justify-content-between course-preview-video-card-container'>
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.375 3.125V5.375M7.625 3.125V5.375M3.875 11.375H21.125M3.125 6.125H21.875V21.875H3.125V6.125Z" stroke="#0EBE6A" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+                                    <p className='m-2'>Fri. 4th, 2022</p>
+                                </div>
+
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.5 21.875C17.6777 21.875 21.875 17.6777 21.875 12.5C21.875 7.32233 17.6777 3.125 12.5 3.125C7.32233 3.125 3.125 7.32233 3.125 12.5C3.125 17.6777 7.32233 21.875 12.5 21.875Z" stroke="#0EBE6A" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"/>
+                                        <path d="M12.875 7.625V12.875L9.125 15.875" stroke="#0EBE6A" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+                                    <p className='m-2'>2:00pm</p>
+                                </div>
+
+                                <div className='d-flex align-items-center justify-content-center'>
+                                    <p className='m-2 course-preview-video-card-calendar-text'>Calendar</p>
+                                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M8.9375 8.46875C8.9375 7.6921 9.5671 7.0625 10.3438 7.0625H22.5312C22.7219 7.0625 22.9037 7.10045 23.0695 7.1692C23.2342 7.23732 23.3885 7.33806 23.5226 7.4714C23.5246 7.47339 23.5266 7.47537 23.5286 7.47737C23.6619 7.6115 23.7627 7.76582 23.8308 7.93046C23.8996 8.09627 23.9375 8.27808 23.9375 8.46875V20.6562C23.9375 21.4329 23.3079 22.0625 22.5312 22.0625C21.7546 22.0625 21.125 21.4329 21.125 20.6562V11.8637L9.46312 23.5256C8.91394 24.0748 8.02356 24.0748 7.47438 23.5256C6.92521 22.9764 6.92521 22.0861 7.47438 21.5369L19.1363 9.875H10.3438C9.5671 9.875 8.9375 9.2454 8.9375 8.46875Z" fill="#0EBE6A"/>
+                                    </svg>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <Link
-                            to={"/tutor/create-assessment"}
+                            to={"/tutor/take-class"}
                             className="btn create-assessment-button btn-lg mt-5 fw-bold h5"
                         >
-                            Enroll for this course
+                            Take Class
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.5 11.5C5.94772 11.5 5.5 11.9477 5.5 12.5C5.5 13.0523 5.94772 13.5 6.5 13.5L6.5 11.5ZM22.2071 13.2071C22.5976 12.8166 22.5976 12.1834 22.2071 11.7929L15.8431 5.42893C15.4526 5.03841 14.8195 5.03841 14.4289 5.42893C14.0384 5.81946 14.0384 6.45262 14.4289 6.84315L20.0858 12.5L14.4289 18.1569C14.0384 18.5474 14.0384 19.1805 14.4289 19.5711C14.8195 19.9616 15.4526 19.9616 15.8431 19.5711L22.2071 13.2071ZM6.5 13.5L21.5 13.5L21.5 11.5L6.5 11.5L6.5 13.5Z" fill="white"/>
                             </svg>
 
                         </Link>
+
                     </div>
 
                     <div className='col d-flex flex-column'>
@@ -298,17 +395,18 @@ const TutorCourseGlance = () => {
 
                         </div>
 
-                        <div class='d-flex align-items-center justify-content-between course-glance-tutor-container mb-3'>
-                            <div className='d-flex align-items-center'>
-                                <img alt='tutor-image' src={tutor1} className='course-glance-tutor-image'/>
-                                <div className='d-flex flex-column mb-2' style={{ marginLeft: '15px'}}>
-                                    <p className='mb-1 course-glance-tutor-title'>Tutor</p>
-                                    <p className='mb-1 course-glance-tutor-full-name'>Nicole Savana</p>
-                                </div>
-                            </div>
+                        {/*<div class='d-flex align-items-center justify-content-between course-glance-tutor-container mb-3'>*/}
+                        {/*    <div className='d-flex align-items-center'>*/}
+                        {/*        <img alt='tutor-image' src={tutor1} className='course-glance-tutor-image'/>*/}
+                        {/*        <div className='d-flex flex-column mb-2' style={{ marginLeft: '15px'}}>*/}
+                        {/*            <p className='mb-1 course-glance-tutor-title'>Tutor</p>*/}
+                        {/*            <p className='mb-1 course-glance-tutor-full-name'>Nicole Savana</p>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
 
-                            <p className='mb-0 course-glance-tutor-view-profile'>View profile</p>
-                        </div>
+                        {/*    <p className='mb-0 course-glance-tutor-view-profile'>View profile</p>*/}
+                        {/*</div>*/}
+                        {/*//todo this div must be moved in student course view page*/}
 
                         <div className='course-glance-students-card d-flex justify-content-start align-items-center'>
                             <div className='d-flex justify-content-center align-items-center'>
