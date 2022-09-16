@@ -219,12 +219,12 @@ const Navbar = () => {
                                     </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a
+                                    <Link
+                                        href={route("tutor-home")}
                                         className={"nav-link text-nowrap"}
-                                        href="#Tutor"
                                     >
                                         {Trans("Tutor")}
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
                                     <a

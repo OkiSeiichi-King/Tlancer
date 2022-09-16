@@ -1,26 +1,14 @@
 import Navbar from "../../HomePage/Navbar";
-import TutorHero from "./TutorHero";
-import Divider from "../../HomePage/Divider";
-import TutorDashboard from "./TutorDashboard";
-import TutorSelfService from "./TutorSelfService";
-import SupportSection from "../../Components/SupportSection";
-import TlancerCommunity from "../../Components/TlancerCommunity";
 import FooterLinks from "../../HomePage/FooterLinks";
-const TutorPage = () => {
+import GuestTutorPage from "@/Pages/ProfilePage/TutorPage/view/GuestTutorPage";
+import UserTutorPage from "@/Pages/ProfilePage/TutorPage/view/UserTutorPage";
+const TutorPage = (props) => {
   return (
     <>
-      <Navbar />
-
-      <TutorHero />
-      <Divider />
-      <TutorDashboard />
-      <TutorSelfService />
-      <Divider />
-      <SupportSection />
-      <Divider />
-      <TlancerCommunity />
-      <Divider />
-
+        {props.auth.user
+            ? <UserTutorPage user={props.auth.user} />
+            : <GuestTutorPage />
+        }
       <FooterLinks />
     </>
   );

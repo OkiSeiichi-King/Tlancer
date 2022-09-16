@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/inertia-react';
 import pencil from "../../../../images/Tutors/pencil.png";
-import { NewCourseProgress } from "../../../../Components/NewCourseProgress";
+import {NewCourseProgress} from "@/Pages/Components/NewCourseProgress";
 
 const TutorNewCourse = () => {
   return (
