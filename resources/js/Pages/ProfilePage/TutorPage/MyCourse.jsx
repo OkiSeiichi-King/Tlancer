@@ -4,9 +4,10 @@ import { Head } from "@inertiajs/inertia-react";
 import FooterLinks from "@/Pages/HomePage/FooterLinks";
 import Divider from "@/Pages/HomePage/Divider";
 import TutorCourseAssessment from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorCourseAssessment";
-import TutorNav from "@/Pages/Components/TutorNav";
 import TutorCourseGlance from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorCourseGlance";
 import TutorDescription from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorDescription";
+import TutorAnnouncements from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorAnnouncements";
+import TutorBreadCrumbs from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorBreadCrumbs";
 
 export default function MyCourse(props) {
     return (
@@ -14,7 +15,9 @@ export default function MyCourse(props) {
             auth={props.auth}
             errors={props.errors}
         >
-            <TutorNav />
+            <Divider />
+            <TutorAnnouncements />
+            <TutorBreadCrumbs />
             <Divider />
             <TutorCourseGlance />
             <Divider />
