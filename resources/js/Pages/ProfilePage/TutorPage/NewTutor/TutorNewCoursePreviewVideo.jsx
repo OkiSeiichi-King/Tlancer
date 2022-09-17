@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/inertia-react';
-import { NewCourseProgress } from "../../../../Components/NewCourseProgress";
 import previewImg from "../../../../images/Tutors/course-preview-video.png";
+import {NewCourseProgress} from "@/Pages/Components/NewCourseProgress";
 const TutorNewCoursePreviewVideo = () => {
   return (
     <>
@@ -47,18 +47,13 @@ const TutorNewCoursePreviewVideo = () => {
                 height="347"
               />
               <div className="course-description-input d-flex align-items-center p-2 col col-md-8">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  className="bi bi-file-earmark-play m-3"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M6 6.883v4.234a.5.5 0 0 0 .757.429l3.528-2.117a.5.5 0 0 0 0-.858L6.757 6.454a.5.5 0 0 0-.757.43z" />
-                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-                </svg>
-                <p className="m-0 me-auto account-heading h4">UX Design.mp4</p>
+                  <span className='p-2' style={{ marginRight: '10px'}}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.125 2.625H12.375L19.875 10.125V21.375H4.125V2.625Z" stroke="#00274C" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M11.625 3.375V10.875H19.125" stroke="#00274C" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  </span>
+                  <p className="m-0 me-auto account-heading h4">UX Design.mp4</p>
                 <button className="fw-bold bg-transparent border-0 email-accent text-nowrap">
                   Change file
                   <svg
