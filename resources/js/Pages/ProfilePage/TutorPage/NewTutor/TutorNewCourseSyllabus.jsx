@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/inertia-react';
-import { NewCourseProgress } from "../../../../Components/NewCourseProgress";
+import {NewCourseProgress} from "@/Pages/Components/NewCourseProgress";
+
 const TutorNewCourseSyllabus = () => {
   return (
     <>
@@ -81,12 +82,11 @@ const TutorNewCourseSyllabus = () => {
               <p className="account-heading account-heading-p h4">
                 PDF, docx, PPT, and text
               </p>
-              <input type="file" name="upload" accept="application/pdf,application/vnd.ms-excel"/>
-              <button className="add-syllabus account-heading rounded-2 my-4 p-3 w-75 h5">
+              <button onClick={e => e.preventDefault()} className="add-syllabus account-heading rounded-2 my-4 p-3 w-75 h5">
                 + Add more
               </button>
             </div>
-            <Link to={"/tutor/course-preview-video"}>
+            <Link href={"/tutor/course-preview-video"}>
               <button className="btn-registration btn btn-lg my-5">
                 Next{" "}
                 <svg
