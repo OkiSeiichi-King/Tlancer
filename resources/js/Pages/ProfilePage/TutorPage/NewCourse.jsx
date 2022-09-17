@@ -1,7 +1,8 @@
 import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import TutorNav from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorNav";
-import TutorNewCourse from "@/Pages/ProfilePage/TutorPage/NewTutor/TutorNewCourse";
+import TutorNewCourseSyllabus from "@/Pages/ProfilePage/TutorPage/NewTutor/TutorNewCourseSyllabus";
+// import TutorNewCourse from "@/Pages/ProfilePage/TutorPage/NewTutor/TutorNewCourse";
 
 export default function NewCourse(props) {
     return (
@@ -11,7 +12,8 @@ export default function NewCourse(props) {
 
         >
             <TutorNav />
-            <TutorNewCourse />
+            {/*<TutorNewCourse />*/}
+            <TutorNewCourseSyllabus />
         </Authenticated>
     );
 }
