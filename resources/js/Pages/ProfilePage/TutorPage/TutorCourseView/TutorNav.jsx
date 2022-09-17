@@ -257,7 +257,7 @@ const TutorNav = () => {
                                         </svg>
                                     </span>
 
-                                    <span className='px-1 mr-5'>
+                                    <span className='px-1' style={{ marginRight: '15px'}}>
                                         <img alt='tutorNavAccount' src={tutorNavAccount} width='50' height='50' />
                                     </span>
                                 </div>
