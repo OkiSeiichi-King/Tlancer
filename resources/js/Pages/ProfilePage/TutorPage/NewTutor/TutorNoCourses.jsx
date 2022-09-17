@@ -18,7 +18,7 @@ const TutorNoCourses = () => {
 
         <div className="container text-center p-5 my-5">
           <Link
-            to={"/tutor/course-details"}
+            href={route('tutor-new-course')}
             className="btn btn-new-course btn-lg fw-bold h5"
           >
             + Add new course
