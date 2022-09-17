@@ -66,6 +66,19 @@ and then call function Trans where you need to, like:
 
 and if languege is set to **en** it will return "Home" and if **ka** will return "მთავარი" translated version
 
+## React Select Library
+
+A flexible and beautiful Select Input control for ReactJS with multiselect, autocomplete, async and creatable support.
+
+  > Github link: https://github.com/jedwatson/react-select
+
+  > React Select Documentation link: https://react-select.com/home#getting-started
+
+  >Import Example: import Select from 'react-select'
+
+For more information and usages please read documentation.
+
+
 
 # iamcares
 # Checking write access to git.

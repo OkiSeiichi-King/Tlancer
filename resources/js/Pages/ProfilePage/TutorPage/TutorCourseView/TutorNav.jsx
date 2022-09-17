@@ -1,7 +1,5 @@
 import {Link, usePage} from '@inertiajs/inertia-react';
-import { useContext } from "react";
 import logo from '../../../images/logo.webp'
-import AuthContext from "@/store/auth-context";
 import { Trans } from '@/Pages/Localization/Trans'
 import tutorNavAccount from '../images/tutorNavAccount.png'
 
@@ -12,11 +10,7 @@ const localTypes = {
 };
 
 const TutorNav = () => {
-    const authCTX = useContext(AuthContext);
-    console.log("authCTX value: " + JSON.stringify(authCTX));
-
     let auth = usePage().props.auth;
-
     const languageBtn = (
         <li id="lang-btn-list-item" className="d-flex dropdown">
             <button
@@ -263,7 +257,7 @@ const TutorNav = () => {
                                         </svg>
                                     </span>
 
-                                    <span className='px-1'>
+                                    <span className='px-1 mr-5'>
                                         <img alt='tutorNavAccount' src={tutorNavAccount} width='50' height='50' />
                                     </span>
                                 </div>

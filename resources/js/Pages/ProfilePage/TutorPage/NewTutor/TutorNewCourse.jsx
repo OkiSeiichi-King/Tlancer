@@ -1,8 +1,38 @@
 import { Link } from '@inertiajs/inertia-react';
 import pencil from "../../../../images/Tutors/pencil.png";
 import {NewCourseProgress} from "@/Pages/Components/NewCourseProgress";
+import Select from 'react-select';
+import {useState} from "react";
+
+const options = [
+    { value: 'uxDesign', label: 'UX Design' },
+    { value: 'design', label: 'Design' },
+    { value: 'ux', label: 'UX' },
+];
 
 const TutorNewCourse = () => {
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    const tagCourseStyles = {
+        control: base => ({
+            ...base,
+            padding: '10px 10px 10px 20px',
+            border: '1px solid rgba(100,100,100,0.3)',
+            borderRadius: '20px'
+        }),
+        multiValue: base => ({
+            ...base,
+            marginRight: '15px',
+            padding: '3px 6px',
+            borderRadius: '10px',
+            backgroundColor: '#F6FBE7',
+            color: '#00274C'
+        }),
+        indicatorSeparator: base => ({
+            ...base,
+            marginRight: '7px'
+        }),
+    }
   return (
     <>
       <style>{`
@@ -21,6 +51,41 @@ const TutorNewCourse = () => {
 
         .current {
           color: var(--product-dark-blue);
+        }
+
+        .number-of-students-container{
+            background: #FFFFFF;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            display: flex;
+            align-items: end;
+            padding: 4px 13px;
+            width: 220px;
+        }
+
+        .number-of-students-input{
+            padding-bottom: 4px;
+            padding-left: 5px;
+        }
+
+        .registration-name{
+            width: 70%;
+        }
+
+        input[type='number']{
+            width: 157px;
+        }
+
+        .number-of-students-input:focus-visible {
+            outline: none;
+        }
+
+        .number-of-students-separator{
+            margin-right: 10px;
+        }
+
+        .new-course-input-title{
+            width: 67%;
         }
 
 
@@ -52,12 +117,10 @@ const TutorNewCourse = () => {
                 </div>
 
                 <div className="me-auto">
-                  <input
-                    type="number"
-                    className="form-control text-end"
-                    id="number-of-students"
-                    placeholder="| Student"
-                  />
+                    <div className='number-of-students-container'>
+                        <p className='mb-1 d-flex'>200 <span className='number-of-students-separator mr-3'>|</span></p>
+                        <input size='1' type='number' className='number-of-students-input border-0' placeholder='Student' />
+                    </div>
                   <label
                     className="my-2 new-course-label"
                     htmlFor="number-of-students"
@@ -67,7 +130,7 @@ const TutorNewCourse = () => {
                 </div>
               </div>
 
-              <div className="p-3 registration-name d-flex flex-row align-items-center registration-input mt-4 w-50">
+              <div className="p-3 registration-name d-flex align-items-center justify-content-around registration-input mt-4">
                 <img
                   className="me-3"
                   src={pencil}
@@ -77,10 +140,11 @@ const TutorNewCourse = () => {
                 />
                 <input
                   id="new-course-title"
-                  className="d-block text-input"
+                  className="d-block text-input new-course-input-title mr-5"
                   type={"text"}
                   placeholder="Course title"
                 />
+                  <p className='mb-0 pl-1'>0/250 words</p>
               </div>
               <label
                 className="mt-2 mb-5 new-course-label"
@@ -96,7 +160,7 @@ const TutorNewCourse = () => {
                   name="course-description"
                   rows="6"
                   style={{ minWidth: "100%" }}
-                  defaultValue="Course description"
+                  placeholder="Course description"
                 />
               </div>
 
@@ -126,6 +190,19 @@ const TutorNewCourse = () => {
                   Choose Course Category
                 </label>
 
+                  <div className="form-row mt-5 col col-sm-6 w-75">
+                      <h3 className="account-form-label fw-bold mb-3 h4">
+                          Tag Course
+                      </h3>
+                      <Select
+                          defaultValue={selectedOption}
+                          onChange={setSelectedOption}
+                          isMulti
+                          styles={tagCourseStyles}
+                          options={options}
+                      />
+                  </div>
+
                 <div className="form-row mt-5 col col-sm-6">
                   <h3 className="account-form-label fw-bold mb-3 h4">
                     Class type
@@ -145,7 +222,7 @@ const TutorNewCourse = () => {
                 </div>
               </div>
             </div>
-            <Link to={"/tutor/course-syllabus"}>
+            <Link href={"/tutor/course-syllabus"}>
               <button className="btn-registration btn btn-lg my-5">
                 Next{" "}
                 <svg
