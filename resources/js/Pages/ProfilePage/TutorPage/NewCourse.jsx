@@ -1,7 +1,8 @@
 import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import TutorNav from "@/Pages/ProfilePage/TutorPage/TutorCourseView/TutorNav";
-import TutorNewCoursePreviewVideo from "@/Pages/ProfilePage/TutorPage/NewTutor/TutorNewCoursePreviewVideo";
+import NewTutorCourseCalendar from "@/Pages/ProfilePage/TutorPage/NewTutor/NewTutorCourseCalendar";
+// import TutorNewCoursePreviewVideo from "@/Pages/ProfilePage/TutorPage/NewTutor/TutorNewCoursePreviewVideo";
 // import TutorNewCourseSyllabus from "@/Pages/ProfilePage/TutorPage/NewTutor/TutorNewCourseSyllabus";
 // import TutorNewCourse from "@/Pages/ProfilePage/TutorPage/NewTutor/TutorNewCourse";
 
@@ -15,7 +16,8 @@ export default function NewCourse(props) {
             <TutorNav />
             {/*<TutorNewCourse />*/}
             {/*<TutorNewCourseSyllabus />*/}
-            <TutorNewCoursePreviewVideo />
+            {/*<TutorNewCoursePreviewVideo />*/}
+            <NewTutorCourseCalendar />
         </Authenticated>
     );
 }
