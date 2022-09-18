@@ -199,7 +199,7 @@ button:focus {
 
 .number-of-students-container-end {
     width: 60px;
-    z-index: 9999999;
+    z-index: 500;
 }
 
 .tutor-course-calendar-clock{
@@ -273,7 +273,7 @@ button:focus {
               </div>
               <div className='d-flex col col-sm-12 tutor-course-calendar-time-container'>
               <Calendar onChange={e=>dateHandler(e)} value={date} />
-                  <div className='row flex-column'>
+                  <div className='row flex-column mb-5'>
                       <h5 className='tutor-course-calendar-set-time-title'>Set Time</h5>
 
                       <div className='mb-2'>
