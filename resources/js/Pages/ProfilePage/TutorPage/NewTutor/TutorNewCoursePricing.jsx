@@ -101,7 +101,7 @@ const TutorNewCoursePricing = () => {
         <div className="container d-flex flex-column flex-md-row">
           <NewCourseProgress current={5} />
           <form className="col col-md-8 ms-md-auto d-flex flex-column">
-              
+
               <h3 className="h4 fw-bold new-course-progress-heading ps-4 align-self-end">
                   New Course
               </h3>
