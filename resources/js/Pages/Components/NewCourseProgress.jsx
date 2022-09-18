@@ -7,14 +7,9 @@ export const NewCourseProgress = (props) => {
   return (
     <>
       <style>{`
-      
-
       .ubuntu {
         color: var(--body-grey);
       }
-     
-     
-
       ul {
         padding-left: 13px;
       }
@@ -43,9 +38,6 @@ export const NewCourseProgress = (props) => {
         id="progress-container"
         className="p-0 ubuntu mx-auto mr-md-auto col col-md-3 mb-5"
       >
-        <h3 className="h4 fw-bold new-course-progress-heading ps-4">
-          New Course
-        </h3>
         <ul className="h4 fw-bold new-course-progress-list py-1">
           <li className={props.current === 1 ? "my-5 current" : "my-5"}>
             <span>Course Details</span>
