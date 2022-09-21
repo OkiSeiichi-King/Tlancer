@@ -58,9 +58,9 @@ class RegisteredUserController extends Controller
 
     public function email_verification()
     {
-        if(Auth::user()->email_verified_at){ //TODO:this needs rework
-            return redirect(RouteServiceProvider::HOME);
-        }
+        // if(Auth::user()->email_verified_at){ //TODO:this needs rework
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
 
         return Inertia::render('JoinPages/VerifyEmail');
     }
