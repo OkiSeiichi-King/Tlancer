@@ -58,9 +58,9 @@ class RegisteredUserController extends Controller
 
     public function email_verification()
     {
-        // if(Auth::user()->email_verified_at){ //TODO:this needs rework
-        //     return redirect(RouteServiceProvider::HOME);
-        // }
+        if(Auth::user()->email_verified_at){ //TODO:this needs rework
+            return redirect(RouteServiceProvider::HOME);
+        }
 
         return Inertia::render('JoinPages/VerifyEmail');
     }
@@ -201,4 +201,14 @@ class RegisteredUserController extends Controller
     {
         return Inertia::render('JoinPages/JoinEmail');
     }
+
+    public function forgot_password()
+    {
+        return Inertia::render('Auth/ForgotPassword');
+    }
+    public function confirm_password()
+    {
+        return Inertia::render('Auth/ConfirmPassword');
+    }
+
 }
