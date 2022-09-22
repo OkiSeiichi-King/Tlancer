@@ -59,10 +59,16 @@ class RegisteredUserController extends Controller
     public function email_verification()
     {
         if(Auth::user()->email_verified_at){ //TODO:this needs rework
-            return redirect(RouteServiceProvider::HOME);
+            return $this->gotoHome();
         }
 
         return Inertia::render('JoinPages/VerifyEmail');
+    }
+
+    public function resend_email(Request $request){
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('message', 'Verification link sent!');
     }
 
     public function verify(Request $request){
@@ -89,7 +95,7 @@ class RegisteredUserController extends Controller
 
         $user = Auth::user();
 
-        // TODO: Redirect to Name, if Role alreadt choosen.
+        // TODO: Redirect to Name, if Role already choosen.
 
         $validated = $request->validate([
             'account_type' => 'required|string',
@@ -113,7 +119,7 @@ class RegisteredUserController extends Controller
         ]);
 
         Auth::user()->update(['birth_date' => $validated['dob']]);
-        return redirect('choose-location');
+        return redirect('choose-phone');
     }
 
     public function store_name(Request $request)

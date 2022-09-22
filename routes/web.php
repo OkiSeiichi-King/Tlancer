@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('email/verify/{id}/{hash}', [RegisteredUserController::class, 'verifyWithLink'])->middleware('signed')->name('verification.verify');
     Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
 
+    Route::post('/email/verification-notification', [RegisteredUserController::class, 'resend_email'])->middleware('throttle:6,1')->name('verification.send');
+
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout'); // Don't need to be verified to logout.
  });
 
