@@ -75,6 +75,8 @@ Route::middleware('guest')->group(function () {
 
     Route::get('join', [RegisteredUserController::class, 'create'])->name('join');
     Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
+
+    
     Route::get('forgot-password', [RegisteredUserController::class, 'forgot_password'])->name('forgot-password');
     Route::get('confirm-password', [RegisteredUserController::class, 'confirm_password'])->name('confirm-password');
 

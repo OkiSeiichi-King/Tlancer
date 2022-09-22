@@ -206,6 +206,7 @@ class RegisteredUserController extends Controller
     {
         return Inertia::render('Auth/ForgotPassword');
     }
+    
     public function confirm_password()
     {
         return Inertia::render('Auth/ConfirmPassword');

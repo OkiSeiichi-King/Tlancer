@@ -28,7 +28,7 @@ const JoinEmail = () => {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('register'));
+        post(route(''));
     };
 
     return (
