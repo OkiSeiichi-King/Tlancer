@@ -1,54 +1,93 @@
-import React from 'react';
-import Button from '@/Components/Button';
-import Guest from '@/Layouts/Guest';
-import Input from '@/Components/Input';
-import InputError from '@/Components/InputError';
-import { Head, useForm } from '@inertiajs/inertia-react';
+import { useForm } from '@inertiajs/inertia-react';
+// import JoinRightWrapper from "./JoinRightWrapper";
+import JoinRightWrapper from '../JoinPages/JoinRightWrapper';
+import imgSignup from "../../images/Registration/img-signup-1.webp";
+import atSign from "../../images/Registration/at-sign.svg";
+import Input from "@/Components/Input";
+// import JoinNav from './JoinNav';
+import JoinNav from '../JoinPages/JoinNav';
+import padlock from "../../images/Registration/padlock.svg";
+import Button from "@/Components/Button";
+import { Trans } from "@/Pages/Localization/Trans";
+import InputError from "@/Components/InputError";
+import React from "react";
 
-export default function ForgotPassword({ status }) {
-    const { data, setData, post, processing, errors } = useForm({
+
+const JoinEmail = () => {
+
+    // Request fixed
+
+    const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
+
     });
 
     const onHandleChange = (event) => {
-        setData(event.target.name, event.target.value);
+        setData(
+            event.target.name,
+            event.target.value);
     };
 
     const submit = (e) => {
         e.preventDefault();
-
-        post(route('password.email'));
+        post(route(''));
     };
 
     return (
-        <Guest>
-            <Head title="Forgot Password" />
+        <>
+            <JoinNav to='welcome' button='close' />
 
-            <div className="mb-4 text-sm text-gray-500 leading-normal">
-                Forgot your password? No problem. Just let us know your email address and we will email you a password
-                reset link that will allow you to choose a new one.
-            </div>
+            <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
+                <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
+                    <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
+                        <h3 className="h1 display-5 fw-bold account-form-label">
+                            Type In Your Email to Change Password
+                        </h3>
+                        {/* <h2 className="account-heading mb-3">Continue to registration</h2> */}
+                        <form onSubmit={submit}>
+                            <div
+                                className="w-75 my-3 my-md-5 p-3 registration-name d-flex flex-row align-items-center registration-input form-group">
+                                <img
+                                    className="me-3"
+                                    src={atSign}
+                                    alt="@"
+                                    width="24"
+                                    height="24"
+                                />
+                                <label className="d-none" htmlFor="login-email">
+                                    Enter email
+                                </label>
+                                <Input
+                                    type="text"
+                                    name="email"
+                                    value={data.email}
+                                    className="d-block text-input"
+                                    autoComplete="username"
+                                    isFocused={true}
+                                    handleChange={onHandleChange}
+                                    placeholder="Enter Email"
+                                />
+                            </div>
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+                            <br />
+                            <Button processing={processing} className="btn-registration btn btn-lg mt-3">
+                                {Trans("Continue")}
+                                <i className="bi bi-arrow-right ms-5"></i>
+                            </Button>
 
-            <form onSubmit={submit}>
-                <Input
-                    type="text"
-                    name="email"
-                    value={data.email}
-                    className="mt-1 block w-full"
-                    isFocused={true}
-                    handleChange={onHandleChange}
-                />
-
-                <InputError message={errors.email} className="mt-2" />
-
-                <div className="flex items-center justify-end mt-4">
-                    <Button className="ml-4" processing={processing}>
-                        Email Password Reset Link
-                    </Button>
+                        </form>
+                    </div>
+                    <div className="col col-md-5">
+                        <JoinRightWrapper
+                            id="email-img"
+                            src={imgSignup}
+                            alt="person using laptop"
+                        />
+                    </div>
                 </div>
-            </form>
-        </Guest>
+            </section>
+        </>
     );
-}
+};
+
+export default JoinEmail;

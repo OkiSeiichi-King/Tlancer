@@ -62,8 +62,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
  */
 
  Route::middleware('auth')->group(function (){
-    Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])->name('verification.notice');
-
     Route::get('email/verify/{id}/{hash}', [RegisteredUserController::class, 'verifyWithLink'])->middleware('signed')->name('verification.verify');
     Route::post('verify', [RegisteredUserController::class, 'verify'])->name('verify');
 
@@ -75,8 +73,14 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 Route::middleware('guest')->group(function () {
 
+    Route::get('email-verification', [RegisteredUserController::class, 'email_verification'])->name('verification.notice');
+
     Route::get('join', [RegisteredUserController::class, 'create'])->name('join');
     Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
+
+    
+    Route::get('forgot-password', [RegisteredUserController::class, 'forgot_password'])->name('forgot-password');
+    Route::get('confirm-password', [RegisteredUserController::class, 'confirm_password'])->name('confirm-password');
 
 
     Route::get('email', [RegisteredUserController::class, 'email'])

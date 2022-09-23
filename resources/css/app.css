@@ -183,3 +183,38 @@
         width: 100% !important;
     }
 }
+ .change-email-btn{
+    border: solid 1px #424242;
+    background-color: white;
+    color: #424242;
+    border-radius: 5px;
+    padding: 7px;
+    transition: 0.2s;
+ }
+
+
+
+.change-email-btn:hover{
+    background-color: #424242;
+    color: white;
+}
+ .envelop-icon{
+    font-size: 25px;
+    color: #0ebe6a;
+} 
+.Resend-code-btn{
+    font-size: 18px;
+    border: solid 1px #0ebe6a;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #0ebe6a;
+    transition: 0.1s;
+}
+.Resend-code-btn:hover{
+    border: #0ebe6a solid 1px;
+    background-color: #0ebe6a;
+    color: white;
+}
+.Resend-code-btn:hover .envelop-icon{
+    color: white;
+} 
