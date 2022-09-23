@@ -221,7 +221,7 @@ const Navbar = () => {
                             </button>
                         </div>
 
-                        <div className="collapse navbar-collapse" id="navbar">
+                        <div className={`${!menubar && "collapse" } navbar-collapse`} id="navbar">
                             <ul className="navbar-nav m-auto mb-2 mb-lg-0 text-center">
                                 <li className="nav-item">
                                     <a
