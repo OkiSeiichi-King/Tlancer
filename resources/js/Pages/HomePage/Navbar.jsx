@@ -11,6 +11,9 @@ const localTypes = {
 };
 
 const Navbar = () => {
+    // toggle navbar in mobile mode
+    const [menubar, toggleMenuBar] = useState(false)
+
     let user = usePage().props.auth.user;
     let auth = usePage().props.auth;
     console.log(auth);
@@ -69,7 +72,29 @@ const Navbar = () => {
             font-size: 20px;
         }
 
-        .navbar-toggler:focus {
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 21px;
+            height: 2px;
+            background-color: black;
+            margin: 5px 5px 5px 6px;
+            transition: 0.4s;
+       }
+      .change .bar1 {
+             transform: rotate(-45deg)  translate(-6px, 5px);
+       }
+    
+      .change .bar2 {
+             opacity: 0;
+      }
+    
+      .change .bar3 {
+         transform: rotate(45deg) translate(-5px, -4px);
+     }
+
+
+    .navbar-toggler:focus {
           border-width: 2px;
         }
 
@@ -125,6 +150,8 @@ const Navbar = () => {
 
           #login-mobile {
             display: flex;
+            font-size: 13px;
+            padding-right: 10px;
           }
           .login {
             display: none;
@@ -178,17 +205,19 @@ const Navbar = () => {
                                     </svg>
                                 </Link>
                             )}
-
                             <button
-                                className="navbar-toggler"
+                                className={`navbar-toggler ${menubar && "change" } `}
                                 type="button"
                                 data-toggle="collapse"
                                 data-target="#navbar"
                                 aria-controls="navbar"
                                 aria-expanded="false"
                                 aria-label="Toggle navigation"
+                                onClick={() => toggleMenuBar(!menubar)}
                             >
-                                <span className="navbar-toggler-icon"></span>
+                                <div className="bar1" ></div>
+                                <div className="bar2" ></div>
+                                <div className="bar3" ></div>
                             </button>
                         </div>
 
