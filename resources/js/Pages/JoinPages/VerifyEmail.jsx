@@ -9,6 +9,7 @@ import { Trans } from "@/Pages/Localization/Trans";
 import Button from "@/Components/Button";
 import InputError from "@/Components/InputError";
 import { BsFillEnvelopeFill } from "react-icons/bs";
+import route from 'vendor/tightenco/ziggy/src/js';
 
 const VerifyEmail = (props) => {
 
@@ -27,6 +28,16 @@ const VerifyEmail = (props) => {
         post(route('verify'));
     };
 
+    const EmailSubmitHandler = (e) => {
+        e.preventDefaultDfault();
+        post(route('change.email'))
+    }
+
+    const CodeSubmitHandler = (e) => {
+        e.preventDefault();
+        post(route('verification.send'))
+    }
+
     return (
         <>
             <JoinNav to="email" button="back" />
@@ -41,9 +52,9 @@ const VerifyEmail = (props) => {
                             A verification code was sent to
                         </h2>
                         <h5 className='account-heading mb-3'>show email here</h5>
-                        <Link to="">
+                        <form onSubmit={EmailSubmitHandler}>
                             <button className='change-email-btn mt-3'>Click Here to Change Email</button>
-                        </Link>
+                        </form>
                         <form onSubmit={submit}>
 
                             <div
@@ -67,8 +78,10 @@ const VerifyEmail = (props) => {
                                 />
 
                             </div>
-                            <div className=''>
-                                <Link to=""><button className='mt-md-2 px-1 py-1 Resend-code-btn'> <BsFillEnvelopeFill className='envelop-icon w-30 mx-1' />Resend Code</button></Link>
+                            <div >
+                                <form onSubmit={CodeSubmitHandler}>
+                                    <button className='mt-md-2 px-1 py-1 Resend-code-btn'> <BsFillEnvelopeFill className='envelop-icon w-30 mx-1' />Resend Code</button>
+                                </form>
                             </div>
 
                             <InputError message={errors.email_verification_code} className="mt-2" />
