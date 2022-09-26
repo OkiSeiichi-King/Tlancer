@@ -9,7 +9,6 @@ import { Trans } from "@/Pages/Localization/Trans";
 import Button from "@/Components/Button";
 import InputError from "@/Components/InputError";
 import { BsFillEnvelopeFill } from "react-icons/bs";
-import route from 'vendor/tightenco/ziggy/src/js';
 
 const VerifyEmail = (props) => {
 
@@ -29,7 +28,7 @@ const VerifyEmail = (props) => {
     };
 
     const EmailSubmitHandler = (e) => {
-        e.preventDefaultDfault();
+        e.preventDefault();
         post(route('change.email'))
     }
 
@@ -41,24 +40,24 @@ const VerifyEmail = (props) => {
     return (
         <>
             <JoinNav to="email" button="back" />
-            <section className="container-fluid registration fade-in d-flex flex-column p-md-5 mb-5">
-                <div className="container d-flex flex-column-reverse flex-md-row  align-items-center">
-                    <div className="col col-md-7 me-md-5 text-center text-md-start mb-5">
+            <section className="mb-5 container-fluid registration fade-in d-flex flex-column p-md-5">
+                <div className="container d-flex flex-column-reverse flex-md-row align-items-center">
+                    <div className="mb-5 text-center col col-md-7 me-md-5 text-md-start">
 
                         <h3 className="h1 display-5 fw-bold account-form-label">
                             Enter Verification code
                         </h3>
-                        <h2 className="account-heading mb-3">
+                        <h2 className="mb-3 account-heading">
                             A verification code was sent to
                         </h2>
-                        <h5 className='account-heading mb-3'>show email here</h5>
+                        <h5 className='mb-3 account-heading'>show email here</h5>
                         <form onSubmit={EmailSubmitHandler}>
-                            <button className='change-email-btn mt-3'>Click Here to Change Email</button>
+                            <button className='mt-3 change-email-btn'>Click Here to Change Email</button>
                         </form>
                         <form onSubmit={submit}>
 
                             <div
-                                className="w-75 my-3 mt-md-4 p-3 registration-name d-flex flex-row align-items-center registration-input me-3">
+                                className="flex-row p-3 my-3 w-75 mt-md-4 registration-name d-flex align-items-center registration-input me-3">
                                 <img
                                     className="me-3"
                                     src={padlock}
@@ -78,25 +77,24 @@ const VerifyEmail = (props) => {
                                 />
 
                             </div>
-                            <div >
-                                <form onSubmit={CodeSubmitHandler}>
-                                    <button className='mt-md-2 px-1 py-1 Resend-code-btn'> <BsFillEnvelopeFill className='envelop-icon w-30 mx-1' />Resend Code</button>
-                                </form>
-                            </div>
-
                             <InputError message={errors.email_verification_code} className="mt-2" />
                             {data.email_verification_code.length !== 6 ? (
-                                <button disabled className="btn-registration btn btn-lg mt-5">
+                                <button disabled className="mt-5 btn-registration btn btn-lg">
                                     {Trans("Continue")}
                                     <i className="bi bi-arrow-right ms-5"></i>
                                 </button>
                             ) : (
-                                <Button processing={processing} className="btn-registration btn btn-lg mt-5">
+                                <Button processing={processing} className="mt-5 btn-registration btn btn-lg">
                                     {Trans("Continue")}
                                     <i className="bi bi-arrow-right ms-5"></i>
                                 </Button>
                             )}
                         </form>
+                        <div >
+                            <form onSubmit={CodeSubmitHandler}>
+                                <button className='px-1 py-1 mt-md-2 Resend-code-btn'> <BsFillEnvelopeFill className='mx-1 envelop-icon w-30' />Resend Code</button>
+                            </form>
+                        </div>
                     </div>
                     <div className="col col-md-5">
                         <JoinRightWrapper src={imgSignup} alt="person using laptop" />

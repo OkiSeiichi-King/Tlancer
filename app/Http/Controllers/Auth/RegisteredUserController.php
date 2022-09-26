@@ -76,12 +76,13 @@ class RegisteredUserController extends Controller
             'email_verification_code' => 'required|string',
         ]);
 
-        if(!$validated['email_verification_code'] == Auth::user()->email_verification_code){
+        if($validated['email_verification_code'] != Auth::user()->email_verification_code){
             return back()->with('error', "Invalid Verification Code");
+        }else{
+            Auth::user()->markEmailAsVerified();
+            return redirect('choose-account');
         }
 
-        Auth::user()->markEmailAsVerified();
-        return redirect('choose-account');
     }
 
     public function verifyWithLink(EmailVerificationRequest $request){
