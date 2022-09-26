@@ -38,6 +38,7 @@ const TutorNewCourse = () => {
       <style>{`
         #tutor-new-course-section {
           margin-top: 8rem;
+          margin-bottom: 10rem;
         }
 
         .course-description-input {
