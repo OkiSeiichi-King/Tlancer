@@ -89,6 +89,15 @@ class RegisteredUserController extends Controller
         return redirect('choose-account');
     }
 
+    public function changeEmail(Request $request)
+    {
+        Auth::guard('web')->logout();
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+
+        return redirect('join');
+    }
+
 
     public function store_account(Request $request)
     {
@@ -212,7 +221,7 @@ class RegisteredUserController extends Controller
     {
         return Inertia::render('Auth/ForgotPassword');
     }
-    
+
     public function confirm_password()
     {
         return Inertia::render('Auth/ConfirmPassword');
