@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class TutorHomePageController extends Controller
 {
     public function index(){
-        return inertia('ProfilePage/TutorPage/TutorPage');
+        $courses = Course::all();
+        return inertia('ProfilePage/TutorPage/TutorPage', ['courses' => $courses]);
     }
 
     public function courses(){
-        return inertia('ProfilePage/TutorPage/MyCourse');
+        $courses = Course::all();
+        return inertia('ProfilePage/TutorPage/MyCourse', ['courses' => $courses]);
     }
 
     public function create(){
